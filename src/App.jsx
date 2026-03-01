@@ -13,7 +13,9 @@ const C = {
 
 // ─── Navbar ───────────────────────────────────────────────────────────────
 function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled,  setScrolled]  = useState(false);
+  const [menuOpen,  setMenuOpen]  = useState(false);
+  const isMobile = () => window.innerWidth < 768;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -28,44 +30,95 @@ function Navbar() {
     { label: "צור קשר", href: "#contact"  },
   ];
 
+  const textColor = scrolled || menuOpen ? C.bark : "rgba(255,255,255,0.9)";
+
   return (
     <nav style={{
       position: "fixed", top: 0, right: 0, left: 0, zIndex: 100,
-      background: scrolled ? "rgba(250,248,243,0.97)" : "transparent",
-      backdropFilter: scrolled ? "blur(8px)" : "none",
-      boxShadow: scrolled ? "0 1px 20px rgba(44,42,38,0.08)" : "none",
-      transition: "all 0.3s ease", padding: "0 24px",
+      background: scrolled || menuOpen ? "rgba(250,248,243,0.97)" : "transparent",
+      backdropFilter: scrolled || menuOpen ? "blur(8px)" : "none",
+      boxShadow: scrolled || menuOpen ? "0 1px 20px rgba(44,42,38,0.08)" : "none",
+      transition: "all 0.3s ease",
     }}>
       <div style={{
-        maxWidth: "1100px", margin: "0 auto",
+        maxWidth: "1100px", margin: "0 auto", padding: "0 24px",
         display: "flex", alignItems: "center", justifyContent: "space-between",
         height: "68px",
       }}>
+        {/* לוגו */}
         <div style={{ lineHeight: 1.1 }}>
-          <div style={{ fontSize: "18px", fontWeight: 800, color: scrolled ? C.oliveDark : "white" }}>עדי שלו</div>
+          <div style={{ fontSize: "18px", fontWeight: 800, color: scrolled || menuOpen ? C.oliveDark : "white" }}>עדי שלו</div>
           <div style={{ fontSize: "11px", color: C.gold, fontWeight: 500, letterSpacing: "1px" }}>רפואה סינית</div>
         </div>
 
-        <div style={{ display: "flex", gap: "32px" }}>
+        {/* קישורים — desktop */}
+        <div style={{ display: "flex", gap: "32px", "@media (max-width: 767px)": { display: "none" } }}
+          className="desktop-nav">
           {links.map(l => (
             <a key={l.href} href={l.href} style={{
-              fontSize: "14px", fontWeight: 600,
-              color: scrolled ? C.bark : "rgba(255,255,255,0.9)",
+              fontSize: "14px", fontWeight: 600, color: textColor,
               textDecoration: "none", transition: "color 0.2s",
-            }}>
-              {l.label}
-            </a>
+            }}>{l.label}</a>
           ))}
         </div>
 
-        <a href="#contact" style={{
-          background: C.gold, color: C.bark, padding: "9px 22px",
-          borderRadius: "50px", fontSize: "14px", fontWeight: 700,
-          textDecoration: "none",
-        }}>
-          קביעת תור
-        </a>
+        {/* כפתורי ימין */}
+        <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+          <a href="#contact" className="desktop-nav" style={{
+            background: C.gold, color: C.bark, padding: "9px 22px",
+            borderRadius: "50px", fontSize: "14px", fontWeight: 700,
+            textDecoration: "none",
+          }}>
+            קביעת תור
+          </a>
+
+          {/* המבורגר — mobile בלבד */}
+          <button
+            className="mobile-nav"
+            onClick={() => setMenuOpen(o => !o)}
+            style={{
+              background: "none", border: "none", cursor: "pointer",
+              padding: "6px", display: "flex", flexDirection: "column", gap: "5px",
+            }}
+          >
+            <span style={{ display: "block", width: "24px", height: "2px", background: textColor, transition: "all 0.3s",
+              transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
+            <span style={{ display: "block", width: "24px", height: "2px", background: textColor, transition: "all 0.3s",
+              opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ display: "block", width: "24px", height: "2px", background: textColor, transition: "all 0.3s",
+              transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
+          </button>
+        </div>
       </div>
+
+      {/* תפריט פתוח — mobile */}
+      {menuOpen && (
+        <div className="mobile-nav" style={{
+          background: "rgba(250,248,243,0.97)", padding: "16px 24px 24px",
+          display: "flex", flexDirection: "column", gap: "4px",
+          borderTop: `1px solid ${C.parchment}`,
+        }}>
+          {links.map(l => (
+            <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)} style={{
+              fontSize: "16px", fontWeight: 600, color: C.bark,
+              textDecoration: "none", padding: "12px 0",
+              borderBottom: `1px solid ${C.parchment}`,
+            }}>{l.label}</a>
+          ))}
+          <a href="#contact" onClick={() => setMenuOpen(false)} style={{
+            background: C.gold, color: C.bark, padding: "14px",
+            borderRadius: "50px", fontSize: "15px", fontWeight: 700,
+            textDecoration: "none", textAlign: "center", marginTop: "12px",
+          }}>
+            קביעת תור
+          </a>
+        </div>
+      )}
+
+      <style>{`
+        @media (min-width: 768px) { .mobile-nav { display: none !important; } }
+        @media (max-width: 767px) { .desktop-nav { display: none !important; } }
+      `}</style>
     </nav>
   );
 }
@@ -154,13 +207,31 @@ function Hero() {
 function About() {
   return (
     <section id="about" style={{ background: C.cream, padding: "90px 24px" }}>
-      <div style={{
-        maxWidth: "900px", margin: "0 auto",
-        display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center",
-      }}>
-        <div style={{
+      <style>{`
+        .about-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 60px;
+          align-items: center;
+        }
+        .about-photo {
+          aspect-ratio: 4/5;
+        }
+        @media (max-width: 767px) {
+          .about-grid {
+            grid-template-columns: 1fr !important;
+            gap: 32px !important;
+          }
+          .about-photo {
+            aspect-ratio: 3/2 !important;
+            max-height: 240px;
+          }
+        }
+      `}</style>
+      <div style={{ maxWidth: "900px", margin: "0 auto" }} className="about-grid">
+        <div className="about-photo" style={{
           background: `linear-gradient(135deg, ${C.parchment}, ${C.olive}22)`,
-          borderRadius: "24px", aspectRatio: "4/5",
+          borderRadius: "24px",
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: "80px", boxShadow: "0 8px 40px rgba(44,42,38,0.08)",
         }}>
