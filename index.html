@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>עדי שלו — רפואה סינית</title>
+    <meta name="description" content="קליניקה לרפואה סינית — דיקור, שיאצו, צמחי מרפא. עדי שלו, מטפל מוסמך עם ניסיון של 8 שנים." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream:        '#FAF8F3',
+              parchment:    '#F0EBE0',
+              olive:        '#6B7A5A',
+              'olive-dark': '#4A5640',
+              gold:         '#C4A96D',
+              'gold-dark':  '#A8894A',
+              bark:         '#2C2A26',
+              'bark-light': '#6B6560',
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap');
+      * { font-family: 'Heebo', sans-serif; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { direction: rtl; margin: 0; background: #FAF8F3; }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
