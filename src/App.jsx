@@ -653,7 +653,8 @@ function ClinicPhotos() {
     <>
       <div ref={scrollRef} className="clinic-carousel" style={{
         display: "flex", gap: "16px", overflowX: "auto",
-        padding: "0 24px",
+        padding: "40px 24px",
+        background: C.cream,
         scrollSnapType: "x mandatory",
         WebkitOverflowScrolling: "touch",
       }}>
