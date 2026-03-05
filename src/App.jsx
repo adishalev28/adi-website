@@ -1038,18 +1038,6 @@ function Contact() {
             <WaSvg size={22} />
             שלחו הודעה ב-WhatsApp
           </a>
-          <a href="https://adi-clinic-app.vercel.app/intake" target="_blank" rel="noreferrer" className="contact-btn" style={{
-            background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.85)",
-            padding: "16px 40px", borderRadius: "50px", fontSize: "16px", fontWeight: 600,
-            textDecoration: "none", border: "1px solid rgba(255,255,255,0.15)",
-            display: "flex", alignItems: "center", justifyContent: "center", gap: "8px",
-            transition: "background 0.2s",
-          }}
-            onMouseEnter={e => e.currentTarget.style.background = "rgba(255,255,255,0.15)"}
-            onMouseLeave={e => e.currentTarget.style.background = "rgba(255,255,255,0.08)"}
-          >
-            📋 מלאו שאלון מטופל
-          </a>
         </div>
       </div>
     </Section>
