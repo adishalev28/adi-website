@@ -974,17 +974,59 @@ const WaSvg = ({ size = 22 }) => (
 
 // ─── Floating WhatsApp Button — flies from Hero CTA ───────────────────────
 function FloatingWA() {
-  const [visible, setVisible] = useState(false);
+  const elRef = useRef(null);
 
   useEffect(() => {
     const heroCta = document.getElementById("hero-cta");
-    if (!heroCta) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
-      { threshold: 0 }
-    );
+    const el = elRef.current;
+    if (!heroCta || !el) return;
+
+    let hoverTimer = null;
+
+    const obs = new IntersectionObserver(([entry]) => {
+      const bw = el.offsetWidth, bh = el.offsetHeight;
+      const anchorX = 28 + bw / 2;
+      const anchorY = window.innerHeight - 28 - bh / 2;
+
+      if (!entry.isIntersecting) {
+        // CTA left viewport — capture its position and fly from there
+        const cta = heroCta.getBoundingClientRect();
+        const fromX = cta.left + cta.width / 2;
+        const fromY = Math.max(cta.top + cta.height / 2, 60);
+        const dx = fromX - anchorX;
+        const dy = fromY - anchorY;
+
+        clearTimeout(hoverTimer);
+        el.style.transition = "none";
+        el.style.transform = `translate(${dx}px, ${dy}px) scale(1.08)`;
+        el.style.opacity = "0.8";
+        void el.offsetHeight; // force reflow
+
+        el.style.transition = "opacity 0.35s ease-out, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s";
+        el.style.transform = "translate(0, 0) scale(1)";
+        el.style.opacity = "1";
+        el.style.pointerEvents = "";
+        hoverTimer = setTimeout(() => {
+          el.style.transition = "transform 0.2s ease, box-shadow 0.3s";
+        }, 750);
+      } else {
+        // CTA back on screen — fly back toward it and fade
+        clearTimeout(hoverTimer);
+        const cta = heroCta.getBoundingClientRect();
+        const toX = cta.left + cta.width / 2;
+        const toY = Math.min(cta.top + cta.height / 2, window.innerHeight - 60);
+        const dx = toX - anchorX;
+        const dy = toY - anchorY;
+
+        el.style.transition = "opacity 0.4s ease-in, transform 0.5s cubic-bezier(0.55, 0, 1, 0.45)";
+        el.style.transform = `translate(${dx}px, ${dy}px) scale(1.08)`;
+        el.style.opacity = "0";
+        el.style.pointerEvents = "none";
+      }
+    }, { threshold: 0 });
+
     obs.observe(heroCta);
-    return () => obs.disconnect();
+    return () => { obs.disconnect(); clearTimeout(hoverTimer); };
   }, []);
 
   return (
@@ -998,30 +1040,18 @@ function FloatingWA() {
           font-size: 17px; font-weight: 700;
           text-decoration: none;
           box-shadow: 0 6px 32px rgba(37,211,102,0.5);
-          transform: translate(0, 0) scale(1);
-          opacity: 1;
-          transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                      box-shadow 0.3s;
+          opacity: 0; pointer-events: none;
         }
-        .wa-float:not(.wa-float-hidden):hover {
-          transform: scale(1.07);
-          box-shadow: 0 8px 36px rgba(37,211,102,0.6);
-        }
-        .wa-float-hidden {
-          opacity: 0;
-          pointer-events: none;
-          transform: translate(calc(50vw - 120px), -35vh) scale(1.1);
+        .wa-float:hover {
+          transform: scale(1.07) !important;
+          box-shadow: 0 8px 36px rgba(37,211,102,0.6) !important;
         }
         @media (max-width: 767px) {
           .wa-float { padding: 16px 22px; }
           .wa-float span.wa-label { display: none; }
-          .wa-float-hidden {
-            transform: translate(calc(50vw - 50px), -35vh) scale(1.1);
-          }
         }
       `}</style>
-      <a href={WA_URL} target="_blank" rel="noreferrer" className={`wa-float${visible ? "" : " wa-float-hidden"}`}>
+      <a ref={elRef} href={WA_URL} target="_blank" rel="noreferrer" className="wa-float">
         <WaSvg size={26} />
         <span className="wa-label">ליצירת קשר</span>
       </a>
