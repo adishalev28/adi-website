@@ -986,24 +986,24 @@ function FloatingWA() {
     <>
       <style>{`
         .wa-float {
-          position: fixed; bottom: 24px; left: 24px; z-index: 200;
-          display: flex; align-items: center; gap: 10px;
+          position: fixed; bottom: 28px; left: 28px; z-index: 200;
+          display: flex; align-items: center; gap: 12px;
           background: #25D366; color: white;
-          padding: 14px 24px; border-radius: 50px;
-          font-size: 14px; font-weight: 700;
+          padding: 18px 32px; border-radius: 50px;
+          font-size: 17px; font-weight: 700;
           text-decoration: none;
-          box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+          box-shadow: 0 6px 32px rgba(37,211,102,0.5);
           transition: opacity 0.4s, transform 0.4s;
         }
-        .wa-float:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(37,211,102,0.5); }
+        .wa-float:hover { transform: scale(1.07); box-shadow: 0 8px 36px rgba(37,211,102,0.6); }
         .wa-float-hidden { opacity: 0; pointer-events: none; transform: translateY(20px); }
         @media (max-width: 767px) {
-          .wa-float { padding: 14px 18px; }
+          .wa-float { padding: 16px 22px; }
           .wa-float span.wa-label { display: none; }
         }
       `}</style>
       <a href={WA_URL} target="_blank" rel="noreferrer" className={`wa-float${visible ? "" : " wa-float-hidden"}`}>
-        <WaSvg size={20} />
+        <WaSvg size={26} />
         <span className="wa-label">ליצירת קשר</span>
       </a>
     </>
