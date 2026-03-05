@@ -1,0 +1,18 @@
+{
+  "name": "עדי שלו — רפואה סינית",
+  "short_name": "עדי שלו",
+  "description": "קליניקה לרפואה סינית — דיקור, שיאצו, צמחי מרפא. ראשון לציון.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF8F3",
+  "theme_color": "#6B7A5A",
+  "icons": [
+    {
+      "src": "/LOGO1.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
