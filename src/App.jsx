@@ -262,7 +262,7 @@ function Hero() {
         </div>
         <br />
 
-        <a href={WA_URL} target="_blank" rel="noreferrer" style={{
+        <a id="hero-cta" href={WA_URL} target="_blank" rel="noreferrer" style={{
           display: "inline-flex", alignItems: "center", gap: "10px",
           background: "linear-gradient(135deg, #34A853, #2D9248)",
           color: "white", padding: "18px 44px",
@@ -972,14 +972,19 @@ const WaSvg = ({ size = 22 }) => (
   </svg>
 );
 
-// ─── Floating WhatsApp Button ─────────────────────────────────────────────
+// ─── Floating WhatsApp Button — flies from Hero CTA ───────────────────────
 function FloatingWA() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 400);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const heroCta = document.getElementById("hero-cta");
+    if (!heroCta) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => setVisible(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    obs.observe(heroCta);
+    return () => obs.disconnect();
   }, []);
 
   return (
@@ -993,13 +998,27 @@ function FloatingWA() {
           font-size: 17px; font-weight: 700;
           text-decoration: none;
           box-shadow: 0 6px 32px rgba(37,211,102,0.5);
-          transition: opacity 0.4s, transform 0.4s;
+          transform: translate(0, 0) scale(1);
+          opacity: 1;
+          transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                      box-shadow 0.3s;
         }
-        .wa-float:hover { transform: scale(1.07); box-shadow: 0 8px 36px rgba(37,211,102,0.6); }
-        .wa-float-hidden { opacity: 0; pointer-events: none; transform: translateY(20px); }
+        .wa-float:not(.wa-float-hidden):hover {
+          transform: scale(1.07);
+          box-shadow: 0 8px 36px rgba(37,211,102,0.6);
+        }
+        .wa-float-hidden {
+          opacity: 0;
+          pointer-events: none;
+          transform: translate(calc(50vw - 120px), -35vh) scale(1.1);
+        }
         @media (max-width: 767px) {
           .wa-float { padding: 16px 22px; }
           .wa-float span.wa-label { display: none; }
+          .wa-float-hidden {
+            transform: translate(calc(50vw - 50px), -35vh) scale(1.1);
+          }
         }
       `}</style>
       <a href={WA_URL} target="_blank" rel="noreferrer" className={`wa-float${visible ? "" : " wa-float-hidden"}`}>
