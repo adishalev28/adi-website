@@ -319,7 +319,7 @@ function Stats() {
 // ─── About ────────────────────────────────────────────────────────────────
 function About() {
   return (
-    <Section id="about" bg={C.cream} style={{ paddingTop: "0px", paddingBottom: "60px" }}>
+    <Section id="about" bg={C.sand} style={{ padding: "20px 24px 60px" }}>
       <style>{`
         .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: center; max-width: 920px; margin: 0 auto; }
         .about-photo { aspect-ratio: 4/5; border-radius: 20px; overflow: hidden; box-shadow: 0 12px 48px rgba(44,42,38,0.12); }
@@ -406,7 +406,7 @@ const SERVICES = [
 
 function Services() {
   return (
-    <Section id="services" bg={C.sand} style={{ paddingBottom: "40px" }}>
+    <Section id="services" bg={C.sand} style={{ padding: "100px 24px 20px" }}>
       <div style={{ maxWidth: "1000px", margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: "60px" }}>
           <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>השירותים שלי</div>
