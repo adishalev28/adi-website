@@ -974,13 +974,17 @@ function Reviews() {
         {REVIEWS.map(r => <ReviewCard key={r.name} r={r} />)}
       </div>
 
-      {/* Scroll hint — right after carousel */}
-      <div style={{ textAlign: "center", marginTop: "14px", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
+      {/* Scroll hint — animated arrow */}
+      <div style={{ textAlign: "center", marginTop: "16px", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
         <span style={{ fontSize: "13px", color: C.barkLight, opacity: 0.7, fontWeight: 500 }}>גלול לעוד ביקורות</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={C.barkLight} strokeWidth="2" strokeLinecap="round" style={{ opacity: 0.6 }}>
+        <svg className="scroll-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={C.sage} strokeWidth="2.5" strokeLinecap="round">
           <path d="M15 18l-6-6 6-6"/>
         </svg>
       </div>
+      <style>{`
+        @keyframes nudgeLeft { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-6px); } }
+        .scroll-arrow { animation: nudgeLeft 1.5s ease-in-out infinite; }
+      `}</style>
 
       {/* Google link */}
       <div style={{ textAlign: "center", marginTop: "24px" }}>
@@ -1003,7 +1007,7 @@ function Reviews() {
         .reviews-carousel::-webkit-scrollbar { display: none; }
         .reviews-carousel { scrollbar-width: none; }
         @media (max-width: 767px) {
-          .review-card { width: 85vw !important; }
+          .review-card { width: 78vw !important; }
         }
       `}</style>
     </Section>
