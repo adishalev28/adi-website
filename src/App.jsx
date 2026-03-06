@@ -621,13 +621,22 @@ function ClinicPhotos() {
   const userTouchedP = useRef(false);
   const [lbIndex, setLbIndex] = useState(null);
 
-  // Auto-scroll hook for a carousel
+  // Auto-scroll hook for a carousel — only stops on intentional horizontal interaction
   const useAutoScroll = (ref, touched, interval) => {
     useEffect(() => {
       const el = ref.current;
       if (!el) return;
-      const onTouch = () => { touched.current = true; };
-      el.addEventListener("pointerdown", onTouch);
+      let startX = 0, startY = 0;
+      const onDown = (e) => { startX = e.clientX || e.touches?.[0]?.clientX || 0; startY = e.clientY || e.touches?.[0]?.clientY || 0; };
+      const onMove = (e) => {
+        if (touched.current) return;
+        const cx = e.clientX || e.touches?.[0]?.clientX || 0;
+        const cy = e.clientY || e.touches?.[0]?.clientY || 0;
+        const dx = Math.abs(cx - startX), dy = Math.abs(cy - startY);
+        if (dx > 15 && dx > dy) touched.current = true; // horizontal swipe — stop auto-scroll
+      };
+      el.addEventListener("pointerdown", onDown);
+      el.addEventListener("pointermove", onMove);
 
       let iv = null;
       const startScroll = () => {
@@ -650,7 +659,7 @@ function ClinicPhotos() {
       );
       obs.observe(el);
 
-      return () => { stopScroll(); obs.disconnect(); el.removeEventListener("pointerdown", onTouch); };
+      return () => { stopScroll(); obs.disconnect(); el.removeEventListener("pointerdown", onDown); el.removeEventListener("pointermove", onMove); };
     }, []);
   };
 
