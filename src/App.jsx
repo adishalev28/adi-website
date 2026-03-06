@@ -604,7 +604,7 @@ function PhotoLightbox({ photos, startIndex, onClose }) {
 
 // ─── Clinic Photos — horizontal scroll strip with auto-scroll ────────────
 function ClinicPhotos() {
-  const photos = [
+  const allPhotos = [
     { src: "/clinic-room.jpg", alt: "חדר טיפולים" },
     { src: "/adi-acupuncture.jpg", alt: "דיקור סיני" },
     { src: "/adi-desk.jpg", alt: "חדר ייעוץ" },
@@ -612,80 +612,124 @@ function ClinicPhotos() {
     { src: "/adi-treatment.jpg", alt: "טיפול במכשיר" },
     { src: "/clinic-entrance.jpg", alt: "כניסה לקליניקה" },
   ];
-  const scrollRef = useRef(null);
-  const userTouched = useRef(false);
+  const landscape = allPhotos.filter((_, i) => [0, 1, 2].includes(i)); // clinic-room, acupuncture, desk
+  const portrait  = allPhotos.filter((_, i) => [3, 4, 5].includes(i)); // shiatsu, treatment, entrance
+
+  const scrollRefL = useRef(null);
+  const scrollRefP = useRef(null);
+  const userTouchedL = useRef(false);
+  const userTouchedP = useRef(false);
   const [lbIndex, setLbIndex] = useState(null);
 
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    const onTouch = () => { userTouched.current = true; };
-    el.addEventListener("pointerdown", onTouch);
+  // Auto-scroll hook for a carousel
+  const useAutoScroll = (ref, touched, interval) => {
+    useEffect(() => {
+      const el = ref.current;
+      if (!el) return;
+      const onTouch = () => { touched.current = true; };
+      el.addEventListener("pointerdown", onTouch);
 
-    let iv = null;
-    const startScroll = () => {
-      if (iv) return;
-      iv = setInterval(() => {
-        if (userTouched.current) return;
-        const card = el.querySelector(".clinic-photo");
-        if (!card) return;
-        const step = card.offsetWidth + 16;
-        const maxScroll = el.scrollWidth - el.clientWidth;
-        if (el.scrollLeft <= -maxScroll + 10) el.scrollTo({ left: 0, behavior: "smooth" });
-        else el.scrollBy({ left: -step, behavior: "smooth" });
-      }, 2000);
-    };
-    const stopScroll = () => { clearInterval(iv); iv = null; };
+      let iv = null;
+      const startScroll = () => {
+        if (iv) return;
+        iv = setInterval(() => {
+          if (touched.current) return;
+          const card = el.querySelector(".clinic-photo-l, .clinic-photo-p");
+          if (!card) return;
+          const step = card.offsetWidth + 16;
+          const maxScroll = el.scrollWidth - el.clientWidth;
+          if (el.scrollLeft <= -maxScroll + 10) el.scrollTo({ left: 0, behavior: "smooth" });
+          else el.scrollBy({ left: -step, behavior: "smooth" });
+        }, interval);
+      };
+      const stopScroll = () => { clearInterval(iv); iv = null; };
 
-    const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) startScroll(); else stopScroll(); },
-      { threshold: 0.3 }
-    );
-    obs.observe(el);
+      const obs = new IntersectionObserver(
+        ([e]) => { if (e.isIntersecting) startScroll(); else stopScroll(); },
+        { threshold: 0.3 }
+      );
+      obs.observe(el);
 
-    return () => { stopScroll(); obs.disconnect(); el.removeEventListener("pointerdown", onTouch); };
-  }, []);
+      return () => { stopScroll(); obs.disconnect(); el.removeEventListener("pointerdown", onTouch); };
+    }, []);
+  };
 
-  const openLb = (i) => setLbIndex(i);
+  useAutoScroll(scrollRefL, userTouchedL, 2500);
+  useAutoScroll(scrollRefP, userTouchedP, 3000);
+
   const closeLb = () => setLbIndex(null);
 
   return (
     <>
-      <div ref={scrollRef} className="clinic-carousel" style={{
-        display: "flex", gap: "16px", overflowX: "auto",
-        padding: "40px 24px",
-        background: C.cream,
-        scrollSnapType: "x mandatory",
-        WebkitOverflowScrolling: "touch",
-      }}>
-        {photos.map((p, i) => (
-          <div key={p.src} className="clinic-photo" onClick={() => openLb(i)} style={{
-            flexShrink: 0, scrollSnapAlign: "start",
-            borderRadius: "12px", overflow: "hidden",
-            width: "350px", height: "340px", cursor: "pointer",
-          }}>
-            <img src={p.src} alt={p.alt} loading="lazy" style={{
-              width: "100%", height: "100%",
-              display: "block", objectFit: "cover", objectPosition: "top",
-              transition: "transform 0.3s",
-            }}
-              onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
-              onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
-            />
-          </div>
-        ))}
+      <div style={{ background: C.cream, padding: "40px 0 0" }}>
+        {/* קרוסל רוחב */}
+        <div ref={scrollRefL} className="clinic-carousel" style={{
+          display: "flex", gap: "16px", overflowX: "auto",
+          padding: "0 24px 20px",
+          scrollSnapType: "x mandatory",
+          WebkitOverflowScrolling: "touch",
+        }}>
+          {landscape.map((p) => {
+            const allIdx = allPhotos.findIndex(a => a.src === p.src);
+            return (
+              <div key={p.src} className="clinic-photo-l" onClick={() => setLbIndex(allIdx)} style={{
+                flexShrink: 0, scrollSnapAlign: "start",
+                borderRadius: "12px", overflow: "hidden",
+                width: "420px", height: "280px", cursor: "pointer",
+              }}>
+                <img src={p.src} alt={p.alt} loading="lazy" style={{
+                  width: "100%", height: "100%",
+                  display: "block", objectFit: "cover",
+                  transition: "transform 0.3s",
+                }}
+                  onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
+                  onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* קרוסל אורך */}
+        <div ref={scrollRefP} className="clinic-carousel" style={{
+          display: "flex", gap: "16px", overflowX: "auto",
+          padding: "0 24px 40px",
+          scrollSnapType: "x mandatory",
+          WebkitOverflowScrolling: "touch",
+        }}>
+          {portrait.map((p) => {
+            const allIdx = allPhotos.findIndex(a => a.src === p.src);
+            return (
+              <div key={p.src} className="clinic-photo-p" onClick={() => setLbIndex(allIdx)} style={{
+                flexShrink: 0, scrollSnapAlign: "start",
+                borderRadius: "12px", overflow: "hidden",
+                width: "240px", height: "340px", cursor: "pointer",
+              }}>
+                <img src={p.src} alt={p.alt} loading="lazy" style={{
+                  width: "100%", height: "100%",
+                  display: "block", objectFit: "cover", objectPosition: "top",
+                  transition: "transform 0.3s",
+                }}
+                  onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
+                  onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       {/* Lightbox */}
       {lbIndex !== null && (
-        <PhotoLightbox photos={photos} startIndex={lbIndex} onClose={closeLb} />
+        <PhotoLightbox photos={allPhotos} startIndex={lbIndex} onClose={closeLb} />
       )}
 
       <style>{`
         .clinic-carousel::-webkit-scrollbar { display: none; }
         .clinic-carousel { scrollbar-width: none; }
         @media (max-width: 767px) {
-          .clinic-photo { width: 280px !important; height: 210px !important; }
+          .clinic-photo-l { width: 320px !important; height: 210px !important; }
+          .clinic-photo-p { width: 200px !important; height: 280px !important; }
         }
       `}</style>
     </>
