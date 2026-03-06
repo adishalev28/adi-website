@@ -608,9 +608,9 @@ function ClinicPhotos() {
     { src: "/clinic-room.jpg", alt: "חדר טיפולים" },
     { src: "/adi-acupuncture.jpg", alt: "דיקור סיני" },
     { src: "/adi-desk.jpg", alt: "חדר ייעוץ" },
-    { src: "/adi-shiatsu.jpg", alt: "שיאצו" },
-    { src: "/adi-treatment.jpg", alt: "טיפול במכשיר" },
     { src: "/clinic-entrance.jpg", alt: "כניסה לקליניקה" },
+    { src: "/adi-treatment.jpg", alt: "טיפול במכשיר" },
+    { src: "/adi-shiatsu.jpg", alt: "שיאצו" },
   ];
   const landscape = allPhotos.filter((_, i) => [0, 1, 2].includes(i)); // clinic-room, acupuncture, desk
   const portrait  = allPhotos.filter((_, i) => [3, 4, 5].includes(i)); // shiatsu, treatment, entrance
