@@ -216,8 +216,8 @@ function Hero() {
       }}>
         <div style={{
           display: "inline-block", marginBottom: "16px",
-          fontSize: "clamp(18px, 3vw, 24px)", color: "rgba(255,255,255,0.9)", fontWeight: 500,
-          letterSpacing: "2px",
+          fontSize: "clamp(13px, 2.5vw, 18px)", color: "rgba(255,255,255,0.9)", fontWeight: 500,
+          letterSpacing: "2px", whiteSpace: "nowrap",
         }}>
           ✦ רפואה סינית מסורתית · ראשון לציון ✦
         </div>
