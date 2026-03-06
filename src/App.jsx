@@ -662,11 +662,11 @@ function ClinicPhotos() {
           <div key={p.src} className="clinic-photo" onClick={() => openLb(i)} style={{
             flexShrink: 0, scrollSnapAlign: "start",
             borderRadius: "12px", overflow: "hidden",
-            height: "300px", cursor: "pointer",
+            width: "350px", height: "340px", cursor: "pointer",
           }}>
             <img src={p.src} alt={p.alt} loading="lazy" style={{
-              height: "100%", width: "auto",
-              display: "block", objectFit: "cover",
+              width: "100%", height: "100%",
+              display: "block", objectFit: "cover", objectPosition: "top",
               transition: "transform 0.3s",
             }}
               onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
@@ -685,7 +685,7 @@ function ClinicPhotos() {
         .clinic-carousel::-webkit-scrollbar { display: none; }
         .clinic-carousel { scrollbar-width: none; }
         @media (max-width: 767px) {
-          .clinic-photo { height: 240px !important; }
+          .clinic-photo { width: 280px !important; height: 210px !important; }
         }
       `}</style>
     </>
