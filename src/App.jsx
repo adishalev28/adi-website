@@ -79,7 +79,7 @@ function Navbar() {
         height: "64px",
       }}>
         {/* לוגו */}
-        <a href="#" style={{ textDecoration: "none", marginRight: "-48px", marginTop: filled ? "0" : "14px", transition: "margin 0.3s" }}>
+        <a href="#" style={{ textDecoration: "none", marginRight: "-64px", marginTop: filled ? "0" : "22px", transition: "margin 0.3s" }}>
           <img src="/LOGO1.png" alt="עדי שלו" style={{
             height: filled ? "52px" : "78px", width: "auto",
             filter: filled ? "none" : "brightness(0) invert(1)",
