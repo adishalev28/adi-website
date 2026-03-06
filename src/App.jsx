@@ -993,7 +993,7 @@ function Reviews() {
             <GoogleSvg />
             <span style={{ fontSize: "22px", fontWeight: 900, color: C.bark }}>5.0</span>
             <Stars />
-            <span style={{ fontSize: "13px", color: C.barkLight, fontWeight: 500 }}>מבוסס על 26 ביקורות</span>
+            <a href="https://www.google.com/search?ie=UTF-8&q=%D7%A2%D7%93%D7%99+%D7%A9%D7%9C%D7%95#ebo=0&mpd=~16663539272075685089/customers/reviews" target="_blank" rel="noreferrer" style={{ fontSize: "13px", color: C.barkLight, fontWeight: 500, textDecoration: "none", borderBottom: "1px dashed " + C.barkLight, paddingBottom: "1px", cursor: "pointer", transition: "color 0.2s" }} onMouseEnter={e => e.currentTarget.style.color = C.bark} onMouseLeave={e => e.currentTarget.style.color = C.barkLight}>מבוסס על 26 ביקורות</a>
           </div>
         </div>
       </div>
@@ -1026,7 +1026,7 @@ function Reviews() {
 
       {/* Google link */}
       <div style={{ textAlign: "center", marginTop: "24px" }}>
-        <a href="https://share.google/vwZyFjHWsAPJRUBf3" target="_blank" rel="noreferrer" style={{
+        <a href="https://www.google.com/search?ie=UTF-8&q=%D7%A2%D7%93%D7%99+%D7%A9%D7%9C%D7%95#ebo=0&mpd=~16663539272075685089/customers/reviews" target="_blank" rel="noreferrer" style={{
           display: "inline-flex", alignItems: "center", gap: "8px",
           background: "white", color: C.barkLight, padding: "12px 24px",
           borderRadius: "50px", fontSize: "13px", fontWeight: 600,
