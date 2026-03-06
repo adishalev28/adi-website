@@ -81,7 +81,7 @@ function Navbar() {
         {/* לוגו */}
         <a href="#" style={{ textDecoration: "none", marginRight: "-28px", marginTop: filled ? "0" : "14px", transition: "margin 0.3s" }}>
           <img src="/LOGO1.png" alt="עדי שלו" style={{
-            height: filled ? "46px" : "62px", width: "auto",
+            height: filled ? "52px" : "78px", width: "auto",
             filter: filled ? "none" : "brightness(0) invert(1)",
             transition: "all 0.3s",
           }} />
@@ -985,16 +985,20 @@ function Reviews() {
         <div style={{ textAlign: "center", marginBottom: "40px" }}>
           <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>מה אומרים המטופלים</div>
           <h2 className="section-title" style={{ fontSize: "36px", fontWeight: 800, color: C.bark, margin: "0 0 20px" }}>ביקורות Google</h2>
-          <div style={{
+          <a href="https://www.google.com/search?ie=UTF-8&q=%D7%A2%D7%93%D7%99+%D7%A9%D7%9C%D7%95#ebo=0&mpd=~16663539272075685089/customers/reviews" target="_blank" rel="noreferrer" style={{
             display: "inline-flex", alignItems: "center", gap: "12px",
             background: "white", padding: "12px 24px", borderRadius: "50px",
             boxShadow: "0 2px 12px rgba(44,42,38,0.08)",
-          }}>
+            textDecoration: "none", cursor: "pointer", transition: "box-shadow 0.2s",
+          }}
+            onMouseEnter={e => e.currentTarget.style.boxShadow = "0 4px 18px rgba(44,42,38,0.15)"}
+            onMouseLeave={e => e.currentTarget.style.boxShadow = "0 2px 12px rgba(44,42,38,0.08)"}
+          >
             <GoogleSvg />
             <span style={{ fontSize: "22px", fontWeight: 900, color: C.bark }}>5.0</span>
             <Stars />
-            <a href="https://www.google.com/search?ie=UTF-8&q=%D7%A2%D7%93%D7%99+%D7%A9%D7%9C%D7%95#ebo=0&mpd=~16663539272075685089/customers/reviews" target="_blank" rel="noreferrer" style={{ fontSize: "13px", color: C.barkLight, fontWeight: 500, textDecoration: "none", borderBottom: "1px dashed " + C.barkLight, paddingBottom: "1px", cursor: "pointer", transition: "color 0.2s" }} onMouseEnter={e => e.currentTarget.style.color = C.bark} onMouseLeave={e => e.currentTarget.style.color = C.barkLight}>מבוסס על 26 ביקורות</a>
-          </div>
+            <span style={{ fontSize: "13px", color: C.barkLight, fontWeight: 500 }}>מבוסס על 26 ביקורות</span>
+          </a>
         </div>
       </div>
 
