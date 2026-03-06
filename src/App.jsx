@@ -975,14 +975,16 @@ function Reviews() {
       </div>
 
       {/* Scroll hint — animated arrow */}
-      <div style={{ textAlign: "center", marginTop: "16px", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
-        <span style={{ fontSize: "13px", color: C.barkLight, opacity: 0.7, fontWeight: 500 }}>גלול לעוד ביקורות</span>
-        <svg className="scroll-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={C.sage} strokeWidth="2.5" strokeLinecap="round">
+      <div className="scroll-hint-row" style={{ textAlign: "center", marginTop: "16px", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px" }}>
+        <span style={{ fontSize: "13px", fontWeight: 500 }}>גלול לעוד ביקורות</span>
+        <svg className="scroll-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
           <path d="M15 18l-6-6 6-6"/>
         </svg>
       </div>
       <style>{`
         @keyframes nudgeLeft { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-6px); } }
+        @keyframes softGlow { 0%, 100% { opacity: 0.45; } 50% { opacity: 0.85; } }
+        .scroll-hint-row { color: ${C.sage}; animation: softGlow 2.5s ease-in-out infinite; }
         .scroll-arrow { animation: nudgeLeft 1.5s ease-in-out infinite; }
       `}</style>
 
