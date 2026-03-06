@@ -214,17 +214,24 @@ function Hero() {
         opacity: loaded ? 1 : 0, transform: loaded ? "translateY(0)" : "translateY(20px)",
         transition: "opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s",
       }}>
+        <div style={{
+          display: "inline-block", marginBottom: "16px",
+          fontSize: "clamp(18px, 3vw, 24px)", color: "rgba(255,255,255,0.9)", fontWeight: 500,
+          letterSpacing: "2px",
+        }}>
+          ✦ רפואה סינית מסורתית · ראשון לציון ✦
+        </div>
         <h1 style={{
           fontSize: "clamp(42px, 7vw, 68px)", fontWeight: 900,
-          color: C.goldLight, margin: "0 0 12px", lineHeight: 1.1,
+          color: C.goldLight, margin: "0 0 8px", lineHeight: 1.1,
           textShadow: "0 2px 20px rgba(0,0,0,0.15)",
         }}>
           עדי שלו
         </h1>
         <p style={{
-          fontSize: "clamp(20px, 3.5vw, 28px)", fontWeight: 500,
-          color: "rgba(255,255,255,0.9)", margin: "0 0 32px",
-          letterSpacing: "2px",
+          fontSize: "clamp(18px, 3vw, 24px)", fontWeight: 500,
+          color: "rgba(255,255,255,0.85)", margin: "0 0 28px",
+          letterSpacing: "1px",
         }}>
           מטפל ברפואה סינית
         </p>
@@ -232,7 +239,7 @@ function Hero() {
         {/* Treatment bullets — clickable */}
         <div style={{
           display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px",
-          margin: "0 auto 44px", maxWidth: "480px",
+          margin: "0 auto 36px", maxWidth: "480px",
         }}>
           {[
             { label: "דיקור סיני", href: "#svc-acupuncture" },
@@ -251,14 +258,6 @@ function Hero() {
               onMouseLeave={e => { e.currentTarget.style.background = "rgba(255,255,255,0.12)"; }}
             >{t.label}</a>
           ))}
-        </div>
-
-        <div style={{
-          display: "inline-block", marginBottom: "24px",
-          fontSize: "14px", color: "white", fontWeight: 500,
-          letterSpacing: "2px", opacity: 0.9,
-        }}>
-          ✦ רפואה סינית מסורתית · ראשון לציון ✦
         </div>
         <br />
 
