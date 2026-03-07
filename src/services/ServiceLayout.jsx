@@ -45,11 +45,11 @@ export default function ServiceLayout({ children, otherServices = [] }) {
 
       {/* כפתור צף - חזרה לדף הראשי */}
       <a href="/" style={{
-        position: "fixed", top: "20px", right: "20px", zIndex: 150,
-        display: "flex", alignItems: "center", gap: "6px",
+        position: "fixed", top: "80px", right: "16px", zIndex: 150,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        width: "44px", height: "44px",
         background: "rgba(250,248,243,0.95)", color: C.sage,
-        padding: "10px 18px", borderRadius: "50px",
-        fontSize: "13px", fontWeight: 700,
+        borderRadius: "50%",
         textDecoration: "none",
         boxShadow: "0 4px 20px rgba(44,42,38,0.12)",
         backdropFilter: "blur(8px)",
@@ -58,9 +58,12 @@ export default function ServiceLayout({ children, otherServices = [] }) {
       }}
         onMouseEnter={e => { e.currentTarget.style.background = C.sage; e.currentTarget.style.color = "white"; }}
         onMouseLeave={e => { e.currentTarget.style.background = "rgba(250,248,243,0.95)"; e.currentTarget.style.color = C.sage; }}
+        title="דף הבית"
       >
-        <span style={{ fontSize: "16px", lineHeight: 1 }}>→</span>
-        דף הבית
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
       </a>
     </>
   );
