@@ -193,12 +193,11 @@ export default function ShiatsuPage() {
               { label: "כלי עבודה", shiatsu: "אגודלים, כפות ידיים, מרפקים", acupuncture: "מחטים דקיקות חד-פעמיות" },
               { label: "לבוש", shiatsu: "בלבוש מלא", acupuncture: "חשיפה חלקית" },
               { label: "תחושה", shiatsu: "לחץ עמוק ומתיחות", acupuncture: "עקצוץ קל ורגיעה" },
-              { label: "משך טיפול", shiatsu: "50-60 דקות", acupuncture: "30-45 דקות" },
               { label: "מתאים במיוחד ל...", shiatsu: "מתח, נוקשות, פחד ממחטים", acupuncture: "כאב כרוני, הורמונים, פריון" },
             ].map((row, i) => (
               <div key={row.label} className="shiatsu-compare-row" style={{
                 display: "grid", gridTemplateColumns: "1fr 1fr 1fr",
-                borderBottom: i < 4 ? `1px solid ${C.sand}` : "none",
+                borderBottom: i < 3 ? `1px solid ${C.sand}` : "none",
               }}>
                 <div style={{
                   padding: "16px", fontSize: "13px", fontWeight: 700, color: C.bark,
