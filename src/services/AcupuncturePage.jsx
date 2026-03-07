@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, useRef } from "react";
 import ServiceLayout from "./ServiceLayout";
 import Section from "../shared/Section";
 import { C, WA_URL } from "../shared/constants";
@@ -90,13 +90,7 @@ export default function AcupuncturePage() {
               בקליניקה של עדי שלו בראשון לציון, כל טיפול דיקור מותאם אישית למצבו של המטופל. הטיפול הראשון כולל אבחון מעמיק — שיחה, בדיקת דופק ולשון — שעל בסיסו נבנית תוכנית טיפול ייחודית.
             </p>
           </div>
-          <div style={{ borderRadius: "20px", overflow: "hidden", boxShadow: "0 4px 24px rgba(44,42,38,0.1)" }}>
-            <img
-              src="/acupuncture-treatment.jpg"
-              alt="טיפול דיקור סיני בקליניקה של עדי שלו בראשון לציון"
-              style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-            />
-          </div>
+          <MagnifyImage src="/acupuncture-treatment.jpg" alt="טיפול דיקור סיני בקליניקה של עדי שלו בראשון לציון — מחטים דקיקות על היד" />
         </div>
         <style>{`
           @media (max-width: 767px) {
@@ -235,6 +229,54 @@ export default function AcupuncturePage() {
         </a>
       </section>
     </ServiceLayout>
+  );
+}
+
+/* זכוכית מגדלת על תמונה */
+function MagnifyImage({ src, alt }) {
+  const [lens, setLens] = useState(null); // { x, y, bgX, bgY }
+  const containerRef = useRef(null);
+  const ZOOM = 2.5;
+  const LENS_SIZE = 150;
+
+  const handleMove = (e) => {
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    // background position: scale coords by zoom factor
+    const bgX = (x / rect.width) * 100;
+    const bgY = (y / rect.height) * 100;
+    setLens({ x, y, bgX, bgY });
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      onMouseMove={handleMove}
+      onMouseLeave={() => setLens(null)}
+      style={{
+        borderRadius: "20px", overflow: "hidden",
+        boxShadow: "0 4px 24px rgba(44,42,38,0.1)",
+        position: "relative", cursor: "zoom-in",
+      }}
+    >
+      <img src={src} alt={alt} style={{ width: "100%", display: "block" }} />
+      {lens && (
+        <div style={{
+          position: "absolute",
+          left: lens.x - LENS_SIZE / 2,
+          top: lens.y - LENS_SIZE / 2,
+          width: LENS_SIZE, height: LENS_SIZE,
+          borderRadius: "50%",
+          border: "3px solid rgba(255,255,255,0.8)",
+          boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+          backgroundImage: `url(${src})`,
+          backgroundSize: `${containerRef.current.offsetWidth * ZOOM}px ${containerRef.current.offsetHeight * ZOOM}px`,
+          backgroundPosition: `${lens.bgX}% ${lens.bgY}%`,
+          pointerEvents: "none",
+        }} />
+      )}
+    </div>
   );
 }
 
