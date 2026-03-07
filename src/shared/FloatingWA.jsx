@@ -13,7 +13,7 @@ export default function FloatingWA() {
     // No hero CTA (service/blog pages)  - show immediately
     if (!heroCta) {
       el.style.opacity = "1";
-      el.style.pointerEvents = "";
+      el.style.pointerEvents = "auto";
       return;
     }
 
@@ -40,7 +40,7 @@ export default function FloatingWA() {
         el.style.transition = "opacity 0.35s ease-out, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s";
         el.style.transform = "translate(0, 0) scale(1)";
         el.style.opacity = "1";
-        el.style.pointerEvents = "";
+        el.style.pointerEvents = "auto";
         hoverTimer = setTimeout(() => {
           el.style.transition = "transform 0.2s ease, box-shadow 0.3s";
         }, 750);
