@@ -43,25 +43,38 @@ export default function CuppingPage() {
         </div>
       </section>
 
-      {/* מה זה כוסות רוח */}
+      {/* מה זה כוסות רוח - עם תמונה */}
       <Section bg={C.cream}>
-        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-          <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>
-            על הטיפול
+        <div className="cupping-about" style={{ maxWidth: "960px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 340px", gap: "40px", alignItems: "center" }}>
+          <div>
+            <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>
+              על הטיפול
+            </div>
+            <h2 style={{ fontSize: "32px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
+              מה זה כוסות רוח?
+            </h2>
+            <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
+              כוסות רוח (Cupping) היא שיטת טיפול עתיקה ברפואה הסינית. בטיפול, המטפל מניח כוסות זכוכית או סיליקון על העור ויוצר ואקום  - שאיבה קלה שמושכת את העור כלפי מעלה. הוואקום מגביר את זרימת הדם לאזור, משחרר מתח בשרירים ומסייע בסילוק רעלים.
+            </p>
+            <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
+              הטיפול נפוץ מאוד בקרב ספורטאים מקצועיים ברחבי העולם  - ואולי שמתם לב לסימנים העגולים האופייניים על הגב של שחקני אולימפיאדה. אבל כוסות רוח מתאימות לכל אחד, לא רק לספורטאים.
+            </p>
+            <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0" }}>
+              בקליניקה של עדי שלו בראשון לציון, כוסות הרוח משולבות לרוב כחלק מטיפול כולל  - יחד עם דיקור סיני או שיאצו  - כדי להעצים את התוצאות.
+            </p>
           </div>
-          <h2 style={{ fontSize: "32px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
-            מה זה כוסות רוח?
-          </h2>
-          <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
-            כוסות רוח (Cupping) היא שיטת טיפול עתיקה ברפואה הסינית. בטיפול, המטפל מניח כוסות זכוכית או סיליקון על העור ויוצר ואקום  - שאיבה קלה שמושכת את העור כלפי מעלה. הוואקום מגביר את זרימת הדם לאזור, משחרר מתח בשרירים ומסייע בסילוק רעלים.
-          </p>
-          <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
-            הטיפול נפוץ מאוד בקרב ספורטאים מקצועיים ברחבי העולם  - ואולי שמתם לב לסימנים העגולים האופייניים על הגב של שחקני אולימפיאדה. אבל כוסות רוח מתאימות לכל אחד, לא רק לספורטאים.
-          </p>
-          <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0" }}>
-            בקליניקה של עדי שלו בראשון לציון, כוסות הרוח משולבות לרוב כחלק מטיפול כולל  - יחד עם דיקור סיני או שיאצו  - כדי להעצים את התוצאות.
-          </p>
+          <div style={{
+            borderRadius: "20px", overflow: "hidden",
+            boxShadow: "0 4px 24px rgba(44,42,38,0.1)",
+          }}>
+            <img src="/cupping-treatment.jpg" alt="טיפול כוסות רוח בקליניקה של עדי שלו בראשון לציון - כוסות זכוכית על הגב" style={{ width: "100%", display: "block" }} />
+          </div>
         </div>
+        <style>{`
+          @media (max-width: 767px) {
+            .cupping-about { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
       </Section>
 
       {/* יתרונות */}
