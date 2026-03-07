@@ -10,7 +10,7 @@ export default function ServiceLayout({ children, otherServices = [] }) {
     <>
       <GlobalStyles />
       <Navbar basePath="/" />
-      <div style={{ paddingTop: "64px" }}>
+      <div>
         {children}
       </div>
 
