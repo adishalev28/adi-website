@@ -244,10 +244,10 @@ const CuppingIcon = () => (
 
 // ─── Services ─────────────────────────────────────────────────────────────
 const SERVICES = [
-  { id: "svc-acupuncture", icon: <AcupunctureIcon />, title: "דיקור סיני",        text: "שיטה עתיקה המכוונת לשיפור זרימת האנרגיה בגוף, הפגת כאבים וטיפול בבעיות רפואיות שונות. הטיפול מותאם אישית לכל מטופל ומשפיע לטווח ארוך על הבריאות הכללית." },
-  { id: "svc-shiatsu",     icon: <ShiatsuIcon />,     title: "שיאצו",             text: "לחיצות ממוקדות לאורך מרידיאנים בגוף, במטרה לשחרר מתח, לשפר את זרימת הדם ולהקל על כאבים. שיאצו הוא פתרון טבעי ויעיל לשיפור הבריאות הפיזית והרגשית." },
-  { id: "svc-herbs",       icon: <HerbsIcon />,       title: "צמחי מרפא סיניים", text: "צמחי מרפא סיניים, הנבחרים בקפידה על פי הצרכים האישיים של כל מטופל. הצמחים תורמים לשיפור המערכת החיסונית, הפחתת דלקות ושיפור הבריאות הכללית בצורה טבעית." },
-  { id: "svc-cupping",     icon: <CuppingIcon />,     title: "כוסות רוח",         text: "שימוש בכוסות רוח לשיפור זרימת הדם ולהפחתת כאבים ודלקת. הטיפול, המבוצע באמצעות יצירת ואקום, מסייע בהקלה על כאבים כרוניים ובשיפור התחושה הכללית." },
+  { id: "svc-acupuncture", icon: <AcupunctureIcon />, title: "דיקור סיני",        href: "/dikur-sini/", text: "שיטה עתיקה המכוונת לשיפור זרימת האנרגיה בגוף, הפגת כאבים וטיפול בבעיות רפואיות שונות. הטיפול מותאם אישית לכל מטופל ומשפיע לטווח ארוך על הבריאות הכללית." },
+  { id: "svc-shiatsu",     icon: <ShiatsuIcon />,     title: "שיאצו",             href: "/shiatsu/", text: "לחיצות ממוקדות לאורך מרידיאנים בגוף, במטרה לשחרר מתח, לשפר את זרימת הדם ולהקל על כאבים. שיאצו הוא פתרון טבעי ויעיל לשיפור הבריאות הפיזית והרגשית." },
+  { id: "svc-herbs",       icon: <HerbsIcon />,       title: "צמחי מרפא סיניים", href: "/herbs/", text: "צמחי מרפא סיניים, הנבחרים בקפידה על פי הצרכים האישיים של כל מטופל. הצמחים תורמים לשיפור המערכת החיסונית, הפחתת דלקות ושיפור הבריאות הכללית בצורה טבעית." },
+  { id: "svc-cupping",     icon: <CuppingIcon />,     title: "כוסות רוח",         href: "/cupping/", text: "שימוש בכוסות רוח לשיפור זרימת הדם ולהפחתת כאבים ודלקת. הטיפול, המבוצע באמצעות יצירת ואקום, מסייע בהקלה על כאבים כרוניים ובשיפור התחושה הכללית." },
 ];
 
 function Services() {
@@ -282,7 +282,18 @@ function Services() {
                 </div>
                 <h3 style={{ fontSize: "18px", fontWeight: 800, color: C.bark, margin: 0 }}>{s.title}</h3>
               </div>
-              <p style={{ fontSize: "14px", color: C.barkLight, lineHeight: 1.8, margin: 0 }}>{s.text}</p>
+              <p style={{ fontSize: "14px", color: C.barkLight, lineHeight: 1.8, margin: "0 0 16px" }}>{s.text}</p>
+              <a href={s.href} style={{
+                display: "inline-flex", alignItems: "center", gap: "6px",
+                fontSize: "14px", fontWeight: 700, color: C.sage,
+                textDecoration: "none", transition: "gap 0.2s",
+              }}
+                onMouseEnter={e => e.currentTarget.style.gap = "10px"}
+                onMouseLeave={e => e.currentTarget.style.gap = "6px"}
+              >
+                קראו עוד
+                <span style={{ fontSize: "18px" }}>←</span>
+              </a>
             </div>
           ))}
         </div>
