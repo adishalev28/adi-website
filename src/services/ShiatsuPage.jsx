@@ -43,25 +43,38 @@ export default function ShiatsuPage() {
         </div>
       </section>
 
-      {/* מה זה שיאצו */}
+      {/* מה זה שיאצו — עם תמונה */}
       <Section bg={C.cream}>
-        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-          <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>
-            על הטיפול
+        <div className="shiatsu-about" style={{ maxWidth: "960px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 340px", gap: "40px", alignItems: "center" }}>
+          <div>
+            <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>
+              על הטיפול
+            </div>
+            <h2 style={{ fontSize: "32px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
+              מה זה שיאצו?
+            </h2>
+            <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
+              שיאצו (Shiatsu) הוא שיטת טיפול יפנית שמשמעותה "לחץ אצבעות". השיטה מבוססת על עקרונות הרפואה הסינית המסורתית ומשלבת לחיצות ממוקדות, מתיחות ותנועות לאורך מרידיאנים — ערוצי אנרגיה שעוברים בגוף.
+            </p>
+            <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
+              בניגוד לעיסוי שוודי שמתמקד בשרירים, שיאצו פועל ברמה עמוקה יותר — הוא מכוון לאזן את זרימת האנרגיה (צ'י) בגוף, לשחרר חסימות ולעורר את מנגנוני הריפוי הטבעיים. הטיפול מתבצע בלבוש מלא, ללא שמנים, על מזרן או מיטת טיפולים.
+            </p>
+            <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0" }}>
+              בקליניקה של עדי שלו בראשון לציון, טיפול השיאצו מותאם אישית לכל מטופל. בזכות שילוב הידע ברפואה סינית, הטיפול מדויק ומכוון לשורש הבעיה.
+            </p>
           </div>
-          <h2 style={{ fontSize: "32px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
-            מה זה שיאצו?
-          </h2>
-          <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
-            שיאצו (Shiatsu) הוא שיטת טיפול יפנית שמשמעותה "לחץ אצבעות". השיטה מבוססת על עקרונות הרפואה הסינית המסורתית ומשלבת לחיצות ממוקדות, מתיחות ותנועות לאורך מרידיאנים — ערוצי אנרגיה שעוברים בגוף.
-          </p>
-          <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
-            בניגוד לעיסוי שוודי שמתמקד בשרירים, שיאצו פועל ברמה עמוקה יותר — הוא מכוון לאזן את זרימת האנרגיה (צ'י) בגוף, לשחרר חסימות ולעורר את מנגנוני הריפוי הטבעיים. הטיפול מתבצע בלבוש מלא, ללא שמנים, על מזרן או מיטת טיפולים.
-          </p>
-          <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0" }}>
-            בקליניקה של עדי שלו בראשון לציון, טיפול השיאצו מותאם אישית לכל מטופל. בזכות שילוב הידע ברפואה סינית עם ניסיון קליני של למעלה מ-8 שנים, הטיפול מדויק ומכוון לשורש הבעיה.
-          </p>
+          <div style={{
+            borderRadius: "20px", overflow: "hidden",
+            boxShadow: "0 4px 24px rgba(44,42,38,0.1)",
+          }}>
+            <img src="/shiatsu-treatment.jpg" alt="טיפול שיאצו בקליניקה של עדי שלו בראשון לציון — לחיצות ממוקדות על הגב" style={{ width: "100%", display: "block" }} />
+          </div>
         </div>
+        <style>{`
+          @media (max-width: 767px) {
+            .shiatsu-about { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
       </Section>
 
       {/* חוויית הטיפול — 3 כרטיסים */}
