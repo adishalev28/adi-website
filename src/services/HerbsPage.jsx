@@ -43,25 +43,38 @@ export default function HerbsPage() {
         </div>
       </section>
 
-      {/* מה זה צמחי מרפא סיניים */}
+      {/* מה זה צמחי מרפא סיניים - עם תמונה */}
       <Section bg={C.cream}>
-        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-          <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>
-            על הטיפול
+        <div className="herbs-about" style={{ maxWidth: "960px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 340px", gap: "40px", alignItems: "center" }}>
+          <div>
+            <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>
+              על הטיפול
+            </div>
+            <h2 style={{ fontSize: "32px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
+              מה זה צמחי מרפא סיניים?
+            </h2>
+            <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
+              רפואת הצמחים הסינית (Chinese Herbal Medicine) היא אחד מענפי הליבה של הרפואה הסינית המסורתית, עם מסורת של אלפי שנים. הטיפול מבוסס על שילוב מדויק של צמחי מרפא בפורמולה מותאמת אישית  - בהתאם לאבחנה הסינית של המטופל.
+            </p>
+            <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
+              בניגוד לתרופות מערביות שפועלות על תסמין ספציפי, הפורמולה הצמחית מטפלת בשורש חוסר האיזון בגוף  - ולכן התוצאות הן לרוב יסודיות ומתמשכות. כל פורמולה מורכבת ממספר צמחים שפועלים יחד בסינרגיה.
+            </p>
+            <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0" }}>
+              בקליניקה של עדי שלו בראשון לציון, הצמחים ניתנים בצורת גרגירים (גרנולות) נוחים לשימוש  - פשוט מערבבים במים חמים ושותים. הפורמולה מותאמת ומשתנה בהתאם להתקדמות הטיפול.
+            </p>
           </div>
-          <h2 style={{ fontSize: "32px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
-            מה זה צמחי מרפא סיניים?
-          </h2>
-          <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
-            רפואת הצמחים הסינית (Chinese Herbal Medicine) היא אחד מענפי הליבה של הרפואה הסינית המסורתית, עם מסורת של אלפי שנים. הטיפול מבוסס על שילוב מדויק של צמחי מרפא בפורמולה מותאמת אישית  - בהתאם לאבחנה הסינית של המטופל.
-          </p>
-          <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
-            בניגוד לתרופות מערביות שפועלות על תסמין ספציפי, הפורמולה הצמחית מטפלת בשורש חוסר האיזון בגוף  - ולכן התוצאות הן לרוב יסודיות ומתמשכות. כל פורמולה מורכבת ממספר צמחים שפועלים יחד בסינרגיה.
-          </p>
-          <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0" }}>
-            בקליניקה של עדי שלו בראשון לציון, הצמחים ניתנים בצורת גרגירים (גרנולות) נוחים לשימוש  - פשוט מערבבים במים חמים ושותים. הפורמולה מותאמת ומשתנה בהתאם להתקדמות הטיפול.
-          </p>
+          <div style={{
+            borderRadius: "20px", overflow: "hidden",
+            boxShadow: "0 4px 24px rgba(44,42,38,0.1)",
+          }}>
+            <img src="/herbs-treatment.jpg" alt="צמחי מרפא סיניים בקליניקה של עדי שלו בראשון לציון - שורשים, עשבי תיבול וגרנולות" style={{ width: "100%", display: "block" }} />
+          </div>
         </div>
+        <style>{`
+          @media (max-width: 767px) {
+            .herbs-about { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
       </Section>
 
       {/* יתרונות */}
