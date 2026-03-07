@@ -38,36 +38,9 @@ export default function AcupuncturePage() {
             דיקור סיני בראשון לציון
           </h1>
           <p style={{ fontSize: "18px", color: "rgba(255,255,255,0.85)", lineHeight: 1.7 }}>
-            טיפול מותאם אישית עם מטפל מוסמך בעל 8+ שנות ניסיון ומעל 500 מטופלים מרוצים
+            טיפול מותאם אישית המשלב אבחון מעמיק עם גישה הוליסטית — להקלה על כאב, שיפור הבריאות ואיזון הגוף והנפש
           </p>
         </div>
-      </section>
-
-      {/* מספרים */}
-      <section style={{
-        background: C.bark, padding: "48px 24px",
-      }}>
-        <div className="acu-stats" style={{
-          maxWidth: "800px", margin: "0 auto",
-          display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "32px",
-          textAlign: "center",
-        }}>
-          {[
-            { num: "8+", label: "שנות ניסיון קליני" },
-            { num: "100+", label: "מצבים שה-WHO מכיר בדיקור עבורם" },
-            { num: "500+", label: "מטופלים מרוצים" },
-          ].map(s => (
-            <div key={s.label}>
-              <div style={{ fontSize: "clamp(36px, 5vw, 48px)", fontWeight: 900, color: C.sage, lineHeight: 1 }}>{s.num}</div>
-              <div style={{ fontSize: "14px", color: "rgba(255,255,255,0.7)", marginTop: "8px", lineHeight: 1.5 }}>{s.label}</div>
-            </div>
-          ))}
-        </div>
-        <style>{`
-          @media (max-width: 600px) {
-            .acu-stats { grid-template-columns: 1fr !important; gap: 24px !important; }
-          }
-        `}</style>
       </section>
 
       {/* מה זה דיקור סיני — עם תמונה */}
@@ -232,18 +205,19 @@ export default function AcupuncturePage() {
   );
 }
 
-/* זכוכית מגדלת על תמונה */
+/* זכוכית מגדלת על תמונה — רק בדסקטופ */
 function MagnifyImage({ src, alt }) {
-  const [lens, setLens] = useState(null); // { x, y, bgX, bgY }
+  const [lens, setLens] = useState(null);
   const containerRef = useRef(null);
   const ZOOM = 2.5;
   const LENS_SIZE = 150;
+  const isTouchDevice = typeof window !== "undefined" && ("ontouchstart" in window || navigator.maxTouchPoints > 0);
 
   const handleMove = (e) => {
+    if (isTouchDevice) return;
     const rect = containerRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    // background position: scale coords by zoom factor
     const bgX = (x / rect.width) * 100;
     const bgY = (y / rect.height) * 100;
     setLens({ x, y, bgX, bgY });
@@ -257,11 +231,11 @@ function MagnifyImage({ src, alt }) {
       style={{
         borderRadius: "20px", overflow: "hidden",
         boxShadow: "0 4px 24px rgba(44,42,38,0.1)",
-        position: "relative", cursor: "zoom-in",
+        position: "relative", cursor: isTouchDevice ? "default" : "zoom-in",
       }}
     >
       <img src={src} alt={alt} style={{ width: "100%", display: "block" }} />
-      {lens && (
+      {lens && !isTouchDevice && (
         <div style={{
           position: "absolute",
           left: lens.x - LENS_SIZE / 2,
