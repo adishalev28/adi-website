@@ -129,8 +129,38 @@ export default function ShiatsuPage() {
         `}</style>
       </Section>
 
-      {/* למי מתאים */}
+      {/* מה אומר המדע */}
       <Section bg={C.cream}>
+        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+          <h2 style={{ fontSize: "28px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
+            מה אומר המחקר על שיאצו?
+          </h2>
+          <div style={{
+            background: "white", borderRadius: "16px", padding: "32px",
+            borderRight: `4px solid ${C.sage}`,
+            boxShadow: "0 2px 16px rgba(44,42,38,0.06)",
+          }}>
+            <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 20px" }}>
+              מחקרים מדעיים עדכניים מאשרים את יעילות השיאצו במגוון מצבים:
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+              {[
+                { icon: "🔬", text: "מחקר שפורסם ב-Journal of Holistic Nursing מצא שטיפולי שיאצו הפחיתו כאבי גב תחתון באופן משמעותי לעומת קבוצת ביקורת." },
+                { icon: "😴", text: "סקירה שיטתית הראתה ששיאצו משפר את איכות השינה ומפחית חרדה  - במיוחד אצל אנשים הסובלים ממתח כרוני." },
+                { icon: "🧠", text: "מחקרים הוכיחו שלחיצה ממוקדת על נקודות אקופרסורה מגרה שחרור אנדורפינים וסרוטונין  - הורמוני ההרגעה הטבעיים של הגוף." },
+              ].map((item, i) => (
+                <div key={i} style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
+                  <span style={{ fontSize: "22px", flexShrink: 0, lineHeight: 1.4 }}>{item.icon}</span>
+                  <p style={{ fontSize: "15px", color: C.barkLight, lineHeight: 1.8, margin: 0 }}>{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* למי מתאים */}
+      <Section bg={C.sand}>
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>
           <h2 style={{ fontSize: "28px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
             למי מתאים שיאצו?
@@ -238,26 +268,35 @@ export default function ShiatsuPage() {
         </div>
       </Section>
 
-      {/* איך הטיפול נראה */}
-      <Section bg={C.sand}>
+      {/* איך הטיפול נראה  - טיימליין */}
+      <Section bg={C.cream}>
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-          <h2 style={{ fontSize: "28px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
+          <h2 style={{ fontSize: "28px", fontWeight: 800, color: C.bark, margin: "0 0 32px" }}>
             איך נראה טיפול שיאצו בקליניקה?
           </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0", position: "relative" }}>
             {[
               { num: "1", title: "שיחה ואבחון", text: "בפגישה הראשונה נשוחח על ההיסטוריה הרפואית, הכאבים ואורח החיים. בדיקת דופק סיני תעזור לזהות חוסר איזון אנרגטי ולהתאים את הטיפול." },
               { num: "2", title: "הטיפול עצמו", text: "הטיפול נמשך כ-50-60 דקות. באמצעות לחיצות אגודלים, כפות ידיים ולעיתים מרפקים, המטפל עובד לאורך המרידיאנים ומשחרר מתח ונוקשות. רוב המטופלים מרגישים הקלה כבר בטיפול הראשון." },
               { num: "3", title: "תוצאות והמשך", text: "אחרי שיאצו רוב האנשים מרגישים רגיעה עמוקה, גמישות משופרת ופחות כאב. סדרת טיפולים של 4-8 מפגשים בדרך כלל מספיקה לטיפול במצבים כרוניים." },
-            ].map(step => (
-              <div key={step.num} style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
+            ].map((step, idx, arr) => (
+              <div key={step.num} style={{ display: "flex", gap: "20px", alignItems: "flex-start", position: "relative", paddingBottom: idx < arr.length - 1 ? "32px" : "0" }}>
+                {idx < arr.length - 1 && (
+                  <div style={{
+                    position: "absolute", right: "19px", top: "44px",
+                    width: "2px", height: "calc(100% - 44px)",
+                    background: `linear-gradient(to bottom, ${C.sage}, ${C.sage}30)`,
+                  }} />
+                )}
                 <div style={{
                   width: "40px", height: "40px", borderRadius: "50%",
                   background: C.sage, color: "white", display: "flex",
                   alignItems: "center", justifyContent: "center",
                   fontSize: "18px", fontWeight: 800, flexShrink: 0,
+                  position: "relative", zIndex: 1,
+                  boxShadow: "0 2px 8px rgba(122,139,106,0.3)",
                 }}>{step.num}</div>
-                <div>
+                <div style={{ background: "white", borderRadius: "16px", padding: "20px 24px", flex: 1, boxShadow: "0 2px 12px rgba(44,42,38,0.05)" }}>
                   <h3 style={{ fontSize: "18px", fontWeight: 700, color: C.bark, margin: "0 0 8px" }}>{step.title}</h3>
                   <p style={{ fontSize: "15px", color: C.barkLight, lineHeight: 1.8, margin: 0 }}>{step.text}</p>
                 </div>

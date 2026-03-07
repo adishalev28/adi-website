@@ -77,33 +77,119 @@ export default function CuppingPage() {
         `}</style>
       </Section>
 
-      {/* יתרונות */}
+      {/* סוגי כוסות רוח */}
       <Section bg={C.sand}>
-        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-          <h2 style={{ fontSize: "28px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
-            היתרונות של כוסות רוח
-          </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+        <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "40px" }}>
+            <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>
+              שיטות טיפול
+            </div>
+            <h2 style={{ fontSize: "28px", fontWeight: 800, color: C.bark, margin: 0 }}>
+              סוגי כוסות רוח בקליניקה
+            </h2>
+          </div>
+          <div className="cupping-types" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "20px" }}>
             {[
-              { title: "שחרור שרירים", text: "הוואקום מרפה שרירים תפוסים ומשחרר נוקשות  - במיוחד בגב, כתפיים וצוואר." },
-              { title: "שיפור זרימת דם", text: "הטיפול מגביר את אספקת הדם לאזור, מה שמזרז תהליכי ריפוי טבעיים." },
-              { title: "הפחתת דלקת", text: "כוסות רוח מסייעות בהפחתת דלקות מקומיות ובהקלה על כאבים כרוניים." },
-              { title: "הרפיה עמוקה", text: "רוב המטופלים מדווחים על תחושת רוגע והרפיה עמוקה אחרי הטיפול." },
-            ].map(item => (
-              <div key={item.title} style={{
-                background: "white", borderRadius: "16px", padding: "24px",
-                boxShadow: "0 2px 16px rgba(44,42,38,0.06)",
+              {
+                icon: "🔥",
+                title: "כוסות רוח יבשות",
+                text: "השיטה הקלאסית  - יצירת ואקום באמצעות אש או משאבה. הכוסות נשארות במקום 5-15 דקות ומשחררות שרירים תפוסים לעומק.",
+                accent: C.sage,
+              },
+              {
+                icon: "🌊",
+                title: "כוסות רוח נעות",
+                text: "הכוסות מוזזות על העור עם שמן. משלב את היתרונות של עיסוי עמוק עם השאיבה  - מעולה לאזורים רחבים כמו הגב.",
+                accent: C.gold,
+              },
+              {
+                icon: "⚡",
+                title: "כוסות רוח + דיקור",
+                text: "שילוב כוסות רוח עם מחטי דיקור  - הכוסות מעצימות את פעולת המחטים ויוצרות שחרור כפול. יעיל במיוחד לכאב כרוני.",
+                accent: C.warm,
+              },
+            ].map(card => (
+              <div key={card.title} style={{
+                background: "white", borderRadius: "20px", padding: "32px 24px",
+                boxShadow: "0 2px 20px rgba(44,42,38,0.06)",
+                borderTop: `4px solid ${card.accent}`,
+                textAlign: "center",
               }}>
-                <h3 style={{ fontSize: "16px", fontWeight: 700, color: C.sage, margin: "0 0 8px" }}>{item.title}</h3>
-                <p style={{ fontSize: "14px", color: C.barkLight, lineHeight: 1.8, margin: 0 }}>{item.text}</p>
+                <div style={{ fontSize: "36px", marginBottom: "16px" }}>{card.icon}</div>
+                <h3 style={{ fontSize: "18px", fontWeight: 700, color: C.bark, margin: "0 0 12px" }}>{card.title}</h3>
+                <p style={{ fontSize: "14px", color: C.barkLight, lineHeight: 1.8, margin: 0 }}>{card.text}</p>
               </div>
             ))}
           </div>
           <style>{`
             @media (max-width: 767px) {
-              .cupping-grid { grid-template-columns: 1fr !important; }
+              .cupping-types { grid-template-columns: 1fr !important; }
             }
           `}</style>
+        </div>
+      </Section>
+
+      {/* יתרונות */}
+      <Section bg={C.cream}>
+        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+          <h2 style={{ fontSize: "28px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
+            היתרונות של כוסות רוח
+          </h2>
+          <div className="cupping-benefits" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+            {[
+              { icon: "💪", title: "שחרור שרירים", text: "הוואקום מרפה שרירים תפוסים ומשחרר נוקשות  - במיוחד בגב, כתפיים וצוואר." },
+              { icon: "🩸", title: "שיפור זרימת דם", text: "הטיפול מגביר את אספקת הדם לאזור, מה שמזרז תהליכי ריפוי טבעיים." },
+              { icon: "🛡️", title: "הפחתת דלקת", text: "כוסות רוח מסייעות בהפחתת דלקות מקומיות ובהקלה על כאבים כרוניים." },
+              { icon: "🧘", title: "הרפיה עמוקה", text: "רוב המטופלים מדווחים על תחושת רוגע והרפיה עמוקה אחרי הטיפול." },
+            ].map(item => (
+              <div key={item.title} style={{
+                background: "white", borderRadius: "16px", padding: "24px",
+                boxShadow: "0 2px 16px rgba(44,42,38,0.06)",
+                display: "flex", gap: "16px", alignItems: "flex-start",
+              }}>
+                <span style={{ fontSize: "28px", flexShrink: 0, lineHeight: 1.3 }}>{item.icon}</span>
+                <div>
+                  <h3 style={{ fontSize: "16px", fontWeight: 700, color: C.sage, margin: "0 0 8px" }}>{item.title}</h3>
+                  <p style={{ fontSize: "14px", color: C.barkLight, lineHeight: 1.8, margin: 0 }}>{item.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <style>{`
+            @media (max-width: 600px) {
+              .cupping-benefits { grid-template-columns: 1fr !important; }
+            }
+          `}</style>
+        </div>
+      </Section>
+
+      {/* מה אומר המדע */}
+      <Section bg={C.sand}>
+        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+          <h2 style={{ fontSize: "28px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
+            מה אומר המחקר על כוסות רוח?
+          </h2>
+          <div style={{
+            background: "white", borderRadius: "16px", padding: "32px",
+            borderRight: `4px solid ${C.sage}`,
+            boxShadow: "0 2px 16px rgba(44,42,38,0.06)",
+          }}>
+            <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 20px" }}>
+              כוסות רוח זכו לפופולריות עולמית  - בזכות ספורטאים אולימפיים ומחקרים שמאשרים את יעילותן:
+            </p>
+            <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+              {[
+                { icon: "🏊", text: "מייקל פלפס ושחקני NBA רבים משתמשים בכוסות רוח באופן קבוע. הסימנים העגולים על הגב הפכו לסמל של שיקום ספורטיבי מתקדם." },
+                { icon: "📊", text: "מטא-אנליזה של 135 מחקרים מצאה שכוסות רוח יעילות בהפחתת כאב, שיפור טווח תנועה והאצת החלמה משרירים." },
+                { icon: "🔬", text: "מחקרים הראו שהוואקום מגביר את זרימת הדם באזור ב-300% ומפעיל תהליכי ריפוי ברמה התאית  - כולל הפחתת חלבוני דלקת." },
+              ].map((item, i) => (
+                <div key={i} style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
+                  <span style={{ fontSize: "22px", flexShrink: 0, lineHeight: 1.4 }}>{item.icon}</span>
+                  <p style={{ fontSize: "15px", color: C.barkLight, lineHeight: 1.8, margin: 0 }}>{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </Section>
 
@@ -129,32 +215,88 @@ export default function CuppingPage() {
         </div>
       </Section>
 
-      {/* איך הטיפול נראה */}
+      {/* איך הטיפול נראה  - טיימליין */}
       <Section bg={C.sand}>
         <div style={{ maxWidth: "720px", margin: "0 auto" }}>
-          <h2 style={{ fontSize: "28px", fontWeight: 800, color: C.bark, margin: "0 0 24px" }}>
+          <h2 style={{ fontSize: "28px", fontWeight: 800, color: C.bark, margin: "0 0 32px" }}>
             איך נראה טיפול כוסות רוח?
           </h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "0", position: "relative" }}>
             {[
               { num: "1", title: "הכנה ואבחון", text: "המטפל בודק את האזורים הכואבים ובוחר את נקודות ההנחה המתאימות. הטיפול מותאם לכל מטופל בהתאם למצבו." },
               { num: "2", title: "הנחת הכוסות", text: "הכוסות מוצמדות לעור באמצעות יצירת ואקום. התחושה היא של משיכה קלה  - לא כאב. הכוסות נשארות 5-15 דקות, ולעיתים מוזזות לאורך השרירים (כוסות רוח נעות)." },
               { num: "3", title: "אחרי הטיפול", text: "לאחר ההסרה נשארים סימנים עגולים ורודים עד סגולים  - זה תקין ונעלם תוך 3-7 ימים. רוב המטופלים מרגישים הקלה מיידית בכאבים ותחושת קלילות." },
-            ].map(step => (
-              <div key={step.num} style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
+            ].map((step, idx, arr) => (
+              <div key={step.num} style={{ display: "flex", gap: "20px", alignItems: "flex-start", position: "relative", paddingBottom: idx < arr.length - 1 ? "32px" : "0" }}>
+                {idx < arr.length - 1 && (
+                  <div style={{
+                    position: "absolute", right: "19px", top: "44px",
+                    width: "2px", height: "calc(100% - 44px)",
+                    background: `linear-gradient(to bottom, ${C.sage}, ${C.sage}30)`,
+                  }} />
+                )}
                 <div style={{
                   width: "40px", height: "40px", borderRadius: "50%",
                   background: C.sage, color: "white", display: "flex",
                   alignItems: "center", justifyContent: "center",
                   fontSize: "18px", fontWeight: 800, flexShrink: 0,
+                  position: "relative", zIndex: 1,
+                  boxShadow: "0 2px 8px rgba(122,139,106,0.3)",
                 }}>{step.num}</div>
-                <div>
+                <div style={{ background: "white", borderRadius: "16px", padding: "20px 24px", flex: 1, boxShadow: "0 2px 12px rgba(44,42,38,0.05)" }}>
                   <h3 style={{ fontSize: "18px", fontWeight: 700, color: C.bark, margin: "0 0 8px" }}>{step.title}</h3>
                   <p style={{ fontSize: "15px", color: C.barkLight, lineHeight: 1.8, margin: 0 }}>{step.text}</p>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </Section>
+
+      {/* מה הסימנים אומרים */}
+      <Section bg={C.cream}>
+        <div style={{ maxWidth: "720px", margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: "32px" }}>
+            <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>
+              מדריך לסימנים
+            </div>
+            <h2 style={{ fontSize: "28px", fontWeight: 800, color: C.bark, margin: "0 0 8px" }}>
+              מה הסימנים על העור אומרים?
+            </h2>
+            <p style={{ fontSize: "15px", color: C.barkLight, margin: 0 }}>
+              הצבע של הסימן מספר על מצב הרקמה באזור
+            </p>
+          </div>
+          <div className="cupping-marks" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+            {[
+              { color: "#F4A0A0", label: "ורוד בהיר", meaning: "זרימה תקינה", desc: "האזור בריא  - חסימה מינימלית. הסימן נעלם תוך יום-יומיים." },
+              { color: "#E06060", label: "אדום", meaning: "מתח קל", desc: "מתח שרירי בינוני. נפוץ באזורי הכתפיים. נעלם תוך 3-4 ימים." },
+              { color: "#A03030", label: "אדום כהה", meaning: "חסימה משמעותית", desc: "מצביע על סטגנציה של דם ואנרגיה. האזור צריך עוד טיפולים." },
+              { color: "#6B2060", label: "סגול כהה", meaning: "חסימה כרונית", desc: "בדרך כלל באזורים עם כאב כרוני ממושך. משתפר עם סדרת טיפולים." },
+            ].map(mark => (
+              <div key={mark.label} style={{
+                background: "white", borderRadius: "16px", padding: "20px",
+                boxShadow: "0 2px 12px rgba(44,42,38,0.05)",
+                display: "flex", gap: "16px", alignItems: "flex-start",
+              }}>
+                <div style={{
+                  width: "44px", height: "44px", borderRadius: "50%",
+                  background: mark.color, flexShrink: 0,
+                  boxShadow: `0 2px 8px ${mark.color}50`,
+                }} />
+                <div>
+                  <div style={{ fontSize: "14px", fontWeight: 800, color: C.bark, marginBottom: "2px" }}>{mark.label}</div>
+                  <div style={{ fontSize: "12px", fontWeight: 700, color: C.sage, marginBottom: "6px" }}>{mark.meaning}</div>
+                  <p style={{ fontSize: "13px", color: C.barkLight, lineHeight: 1.7, margin: 0 }}>{mark.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <style>{`
+            @media (max-width: 600px) {
+              .cupping-marks { grid-template-columns: 1fr !important; }
+            }
+          `}</style>
         </div>
       </Section>
 
