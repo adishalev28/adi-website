@@ -7,7 +7,7 @@ import Footer from "./shared/Footer";
 import FloatingWA from "./shared/FloatingWA";
 import WaSvg from "./shared/WaSvg";
 
-// ─── Hero — full-screen image with warm overlay ──────────────────────────
+// ─── Hero  - full-screen image with warm overlay ──────────────────────────
 function Hero() {
   const [loaded, setLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -35,7 +35,7 @@ function Hero() {
       minHeight: "100vh", position: "relative", overflow: "hidden",
       display: "flex", alignItems: "center", justifyContent: "center",
     }}>
-      {/* Background image — desktop: clinic-room, mobile: portrait hero */}
+      {/* Background image  - desktop: clinic-room, mobile: portrait hero */}
       <div className="hero-bg" style={{
         position: "absolute", inset: 0,
         backgroundImage: `url(${heroSrc})`,
@@ -82,7 +82,7 @@ function Hero() {
           מטפל ברפואה סינית
         </p>
 
-        {/* Treatment bullets — clickable */}
+        {/* Treatment bullets  - clickable */}
         <div style={{
           display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px",
           margin: "0 auto 36px", maxWidth: "480px",
@@ -179,7 +179,7 @@ function About() {
       `}</style>
       <div className="about-grid">
         <div className="about-photo">
-          <img src="/adi-portrait.jpg" alt="עדי שלו — מטפל ברפואה סינית מוסמך, בוגר מכללת רידמן, ראשון לציון" loading="lazy" />
+          <img src="/adi-portrait.jpg" alt="עדי שלו  - מטפל ברפואה סינית מוסמך, בוגר מכללת רידמן, ראשון לציון" loading="lazy" />
         </div>
         <div>
           <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px", textTransform: "uppercase" }}>
@@ -193,10 +193,10 @@ function About() {
             בוגר <strong style={{ color: C.bark }}>מכללת רידמן</strong> לרפואה סינית, עם למעלה מ-8 שנות ניסיון קליני ומעל 500 מטופלים. מתמחה בדיקור סיני, שיאצו, כוסות רוח וצמחי מרפא סיניים.
           </p>
           <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
-            בקליניקה שלי ב<strong style={{ color: C.bark }}>ראשון לציון</strong> אני מעניק לכל מטופל יחס אישי ומקצועי. בטיפול הראשון אני מבצע אבחון מעמיק — שיחה, בדיקת דופק ולשון — ובונה תוכנית טיפול מותאמת שמשלבת בין השיטות השונות לפי הצורך.
+            בקליניקה שלי ב<strong style={{ color: C.bark }}>ראשון לציון</strong> אני מעניק לכל מטופל יחס אישי ומקצועי. בטיפול הראשון אני מבצע אבחון מעמיק  - שיחה, בדיקת דופק ולשון  - ובונה תוכנית טיפול מותאמת שמשלבת בין השיטות השונות לפי הצורך.
           </p>
           <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 32px" }}>
-            המטופלים שלי מגיעים עם כאבי גב, מיגרנות, מתח נפשי, בעיות שינה ועוד — ורבים מהם חווים הקלה משמעותית כבר אחרי מספר טיפולים בודדים. המטרה שלי היא לא רק להקל בכאב, אלא לטפל בשורש הבעיה ולשפר את איכות החיים לאורך זמן.
+            המטופלים שלי מגיעים עם כאבי גב, מיגרנות, מתח נפשי, בעיות שינה ועוד  - ורבים מהם חווים הקלה משמעותית כבר אחרי מספר טיפולים בודדים. המטרה שלי היא לא רק להקל בכאב, אלא לטפל בשורש הבעיה ולשפר את איכות החיים לאורך זמן.
           </p>
           <div className="about-text-tags" style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
             {["דיקור סיני", "שיאצו", "צמחי מרפא", "כוסות רוח"].map(tag => (
@@ -322,7 +322,7 @@ function ForWhom() {
         <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>למי זה מתאים</div>
         <h2 className="section-title" style={{ fontSize: "36px", fontWeight: 800, color: C.bark, margin: "0 0 16px" }}>במה רפואה סינית יכולה לעזור?</h2>
         <p style={{ fontSize: "16px", color: C.barkLight, margin: "0 0 48px", lineHeight: 1.7, maxWidth: "560px", marginInline: "auto" }}>
-          רפואה סינית מטפלת במגוון רחב של מצבים — הנה חלק מהנפוצים. לא מצאתם את מה שאתם מחפשים? צרו קשר ונבדוק יחד
+          רפואה סינית מטפלת במגוון רחב של מצבים  - הנה חלק מהנפוצים. לא מצאתם את מה שאתם מחפשים? צרו קשר ונבדוק יחד
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center" }}>
           {conditions.map(c => (
@@ -343,7 +343,7 @@ function ForWhom() {
   );
 }
 
-// ─── Photo Lightbox — full-screen horizontal scroll gallery ─────────────
+// ─── Photo Lightbox  - full-screen horizontal scroll gallery ─────────────
 function PhotoLightbox({ photos, startIndex, onClose }) {
   const scrollRef = useRef(null);
   const [currentIdx, setCurrentIdx] = useState(startIndex);
@@ -393,7 +393,7 @@ function PhotoLightbox({ photos, startIndex, onClose }) {
       display: "flex", flexDirection: "column",
     }}>
 
-      {/* Top bar — close + counter */}
+      {/* Top bar  - close + counter */}
       <div style={{
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "16px 20px", flexShrink: 0,
@@ -412,7 +412,7 @@ function PhotoLightbox({ photos, startIndex, onClose }) {
         </span>
       </div>
 
-      {/* Scrollable photo strip — each slide is 100vw */}
+      {/* Scrollable photo strip  - each slide is 100vw */}
       <div ref={scrollRef} className="lb-scroll" style={{
         flex: 1, display: "flex", overflowX: "auto",
         scrollSnapType: "x mandatory",
@@ -459,15 +459,15 @@ function PhotoLightbox({ photos, startIndex, onClose }) {
   );
 }
 
-// ─── Clinic Photos — horizontal scroll strip with auto-scroll ────────────
+// ─── Clinic Photos  - horizontal scroll strip with auto-scroll ────────────
 function ClinicPhotos() {
   const allPhotos = [
     { src: "/clinic-room.jpg", alt: "חדר טיפולים בקליניקה לרפואה סינית של עדי שלו בראשון לציון" },
     { src: "/adi-acupuncture.jpg", alt: "עדי שלו מבצע טיפול דיקור סיני בקליניקה בראשון לציון" },
-    { src: "/adi-desk.jpg", alt: "חדר ייעוץ ואבחון בקליניקה לרפואה סינית — עדי שלו" },
+    { src: "/adi-desk.jpg", alt: "חדר ייעוץ ואבחון בקליניקה לרפואה סינית  - עדי שלו" },
     { src: "/clinic-entrance.jpg", alt: "כניסה לקליניקת רפואה סינית עדי שלו בראשון לציון" },
     { src: "/adi-treatment.jpg", alt: "טיפול בכוסות רוח בקליניקה לרפואה סינית בראשון לציון" },
-    { src: "/adi-shiatsu.jpg", alt: "טיפול שיאצו — עיסוי יפני מקצועי בקליניקת עדי שלו" },
+    { src: "/adi-shiatsu.jpg", alt: "טיפול שיאצו  - עיסוי יפני מקצועי בקליניקת עדי שלו" },
   ];
   const landscape = allPhotos.filter((_, i) => [0, 1, 2].includes(i)); // clinic-room, acupuncture, desk
   const portrait  = allPhotos.filter((_, i) => [3, 4, 5].includes(i)); // shiatsu, treatment, entrance
@@ -478,7 +478,7 @@ function ClinicPhotos() {
   const userTouchedP = useRef(false);
   const [lbIndex, setLbIndex] = useState(null);
 
-  // Auto-scroll hook for a carousel — only stops on intentional horizontal interaction
+  // Auto-scroll hook for a carousel  - only stops on intentional horizontal interaction
   const useAutoScroll = (ref, touched, interval) => {
     useEffect(() => {
       const el = ref.current;
@@ -490,7 +490,7 @@ function ClinicPhotos() {
         const cx = e.clientX || e.touches?.[0]?.clientX || 0;
         const cy = e.clientY || e.touches?.[0]?.clientY || 0;
         const dx = Math.abs(cx - startX), dy = Math.abs(cy - startY);
-        if (dx > 15 && dx > dy) touched.current = true; // horizontal swipe — stop auto-scroll
+        if (dx > 15 && dx > dy) touched.current = true; // horizontal swipe  - stop auto-scroll
       };
       el.addEventListener("pointerdown", onDown);
       el.addEventListener("pointermove", onMove);
@@ -604,12 +604,12 @@ function ClinicPhotos() {
 
 // ─── FAQ ──────────────────────────────────────────────────────────────────
 const FAQ_ITEMS = [
-  { q: "האם דיקור סיני כואב?", a: "בדרך כלל לא. המחטים דקות מאוד ורוב המטופלים מרגישים תחושה קלה של עקצוץ או כבדות — אבל לא כאב. רבים אפילו נרדמים במהלך הטיפול." },
+  { q: "האם דיקור סיני כואב?", a: "בדרך כלל לא. המחטים דקות מאוד ורוב המטופלים מרגישים תחושה קלה של עקצוץ או כבדות  - אבל לא כאב. רבים אפילו נרדמים במהלך הטיפול." },
   { q: "כמה טיפולים צריך?", a: "זה תלוי בבעיה ובמטופל. מצבים חריפים (כמו כאב גב חד) יכולים להשתפר תוך 3–5 טיפולים. מצבים כרוניים בדרך כלל דורשים סדרה ארוכה יותר. בטיפול הראשון נקבע יחד תוכנית מותאמת." },
-  { q: "מה ההבדל בין דיקור לשיאצו?", a: "דיקור סיני משתמש במחטים דקות לאורך נקודות על מרידיאנים בגוף. שיאצו הוא עיסוי לחץ ידני באותן נקודות — ללא מחטים. שתי השיטות מבוססות על אותם עקרונות של רפואה סינית." },
-  { q: "מה לצפות בטיפול הראשון?", a: "הטיפול הראשון כולל שיחה מקיפה על הבעיה, ההיסטוריה הרפואית ואורח החיים. לאחר מכן הטיפול עצמו — כ-60 דקות, לפעמים טיפה יותר. מומלץ להגיע לא רעבים ולא מלאים." },
+  { q: "מה ההבדל בין דיקור לשיאצו?", a: "דיקור סיני משתמש במחטים דקות לאורך נקודות על מרידיאנים בגוף. שיאצו הוא עיסוי לחץ ידני באותן נקודות  - ללא מחטים. שתי השיטות מבוססות על אותם עקרונות של רפואה סינית." },
+  { q: "מה לצפות בטיפול הראשון?", a: "הטיפול הראשון כולל שיחה מקיפה על הבעיה, ההיסטוריה הרפואית ואורח החיים. לאחר מכן הטיפול עצמו  - כ-60 דקות, לפעמים טיפה יותר. מומלץ להגיע לא רעבים ולא מלאים." },
   { q: "האם הטיפול מתאים לי אם אני לוקח תרופות?", a: "ברוב המקרים כן. רפואה סינית יכולה לפעול בצוותא עם טיפול קונבנציונלי. חשוב לציין את כל התרופות בשיחת המיון הראשונה." },
-  { q: "איפה הקליניקה?", a: "הקליניקה ממוקמת במערב ראשון לציון. לכתובת המדויקת ולתיאום הגעה — שלחו הודעת WhatsApp ואחזור אליכם." },
+  { q: "איפה הקליניקה?", a: "הקליניקה ממוקמת במערב ראשון לציון. לכתובת המדויקת ולתיאום הגעה  - שלחו הודעת WhatsApp ואחזור אליכם." },
 ];
 
 function FAQ() {
@@ -681,7 +681,7 @@ function FAQ() {
   );
 }
 
-// ─── Reviews — real Google reviews ────────────────────────────────────────
+// ─── Reviews  - real Google reviews ────────────────────────────────────────
 const REVIEWS = [
   {
     text: "הגעתי לעדי אחרי שעברתי אצל מספר נוירולוגים בניסיון לטפל במיגרנות שהלכו והחמירו. המיגרנות היו בתדירות של 3-4 פעמים בשבוע. כעבור מספר טיפולים קטן יכולתי לראות כבר ירידה משמעותית ובסוף הפסקתי לחלוטין לסבול ממיגרנות. עדי תמיד סבלני, מקשיב ומסביר כל דבר שעושה.",
@@ -766,7 +766,7 @@ const Stars = ({ count = 5 }) => (
   </div>
 );
 
-/* Single review card — Itamar's length (255 chars) is the visible standard */
+/* Single review card  - Itamar's length (255 chars) is the visible standard */
 function ReviewCard({ r }) {
   const [collapsed, setCollapsed] = useState(false);
   const isLong = r.text.length > 255;
@@ -880,7 +880,7 @@ function Reviews() {
         {REVIEWS.map(r => <ReviewCard key={r.name} r={r} />)}
       </div>
 
-      {/* Scroll hint — animated arrow */}
+      {/* Scroll hint  - animated arrow */}
       <div className="scroll-hint-row" style={{ textAlign: "center", marginTop: "16px", display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "8px",
         margin: "16px auto 0", padding: "8px 20px", borderRadius: "50px", background: "rgba(107,122,90,0.08)",
       }}>

@@ -36,14 +36,14 @@ export default function Navbar({ basePath = "" }) {
       }}>
         {/* לוגו */}
         <a href={basePath || "#"} style={{ textDecoration: "none", marginRight: filled ? "-38px" : "-54px", marginTop: filled ? "0" : "22px", transition: "margin 0.3s" }}>
-          <img src="/LOGO1.png" alt="לוגו עדי שלו — רפואה סינית בראשון לציון" style={{
+          <img src="/LOGO1.png" alt="לוגו עדי שלו  - רפואה סינית בראשון לציון" style={{
             height: filled ? "52px" : "78px", width: "auto",
             filter: filled ? "none" : "brightness(0) invert(1)",
             transition: "all 0.3s",
           }} />
         </a>
 
-        {/* קישורים — desktop */}
+        {/* קישורים  - desktop */}
         <div style={{ display: "flex", gap: "32px" }} className="desktop-nav">
           {links.map(l => (
             <a key={l.href} href={l.href} className="nav-link" style={{
@@ -68,7 +68,7 @@ export default function Navbar({ basePath = "" }) {
             ליצירת קשר
           </a>
 
-          {/* המבורגר — mobile */}
+          {/* המבורגר  - mobile */}
           <button className="mobile-nav" onClick={() => setMenuOpen(o => !o)}
             style={{ background: "none", border: "none", cursor: "pointer", padding: "6px",
               display: "flex", flexDirection: "column", gap: "5px" }}>

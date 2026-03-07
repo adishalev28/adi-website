@@ -1,4 +1,4 @@
-/* ─── Color Palette — warm nature tones matching the clinic ─── */
+/* ─── Color Palette  - warm nature tones matching the clinic ─── */
 export const C = {
   cream:       "#FAF8F3",
   sand:        "#EDE8DF",

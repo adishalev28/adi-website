@@ -10,7 +10,7 @@ export default function FloatingWA() {
     const el = elRef.current;
     if (!el) return;
 
-    // No hero CTA (service/blog pages) — show immediately
+    // No hero CTA (service/blog pages)  - show immediately
     if (!heroCta) {
       el.style.opacity = "1";
       el.style.pointerEvents = "";

@@ -27,7 +27,7 @@ export default function Footer() {
           >{l.label}</a>
         ))}
       </nav>
-      <div>© {new Date().getFullYear()} עדי שלו — רפואה סינית · ראשון לציון</div>
+      <div>© {new Date().getFullYear()} עדי שלו  - רפואה סינית · ראשון לציון</div>
     </footer>
   );
 }
