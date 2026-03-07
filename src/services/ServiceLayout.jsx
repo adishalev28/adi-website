@@ -42,6 +42,26 @@ export default function ServiceLayout({ children, otherServices = [] }) {
       <ContactCTA />
       <Footer />
       <FloatingWA />
+
+      {/* כפתור צף - חזרה לדף הראשי */}
+      <a href="/" style={{
+        position: "fixed", top: "20px", right: "20px", zIndex: 150,
+        display: "flex", alignItems: "center", gap: "6px",
+        background: "rgba(250,248,243,0.95)", color: C.sage,
+        padding: "10px 18px", borderRadius: "50px",
+        fontSize: "13px", fontWeight: 700,
+        textDecoration: "none",
+        boxShadow: "0 4px 20px rgba(44,42,38,0.12)",
+        backdropFilter: "blur(8px)",
+        border: `1.5px solid ${C.sage}30`,
+        transition: "all 0.2s",
+      }}
+        onMouseEnter={e => { e.currentTarget.style.background = C.sage; e.currentTarget.style.color = "white"; }}
+        onMouseLeave={e => { e.currentTarget.style.background = "rgba(250,248,243,0.95)"; e.currentTarget.style.color = C.sage; }}
+      >
+        <span style={{ fontSize: "16px", lineHeight: 1 }}>→</span>
+        דף הבית
+      </a>
     </>
   );
 }
