@@ -398,10 +398,10 @@ const CuppingIcon = () => (
 
 // ─── Services ─────────────────────────────────────────────────────────────
 const SERVICES = [
-  { id: "svc-acupuncture", icon: <AcupunctureIcon />, title: "דיקור סיני",        text: "החדרת מחטים דקיקות בנקודות ספציפיות לאורך מרידיאנים בגוף. מסייע בכאבי גב, מיגרנות, חרדה, בעיות שינה ועייפות כרונית. הטיפול נמשך כ-45 דקות ורוב המטופלים מרגישים הקלה כבר מהטיפול הראשון." },
-  { id: "svc-shiatsu",     icon: <ShiatsuIcon />,     title: "שיאצו",             text: "עיסוי יפני עמוק בלחץ אגודלים וכפות ידיים על נקודות לאורך מרידיאנים. מתאים במיוחד למתח שרירי, כאבי צוואר וכתפיים, ולמי שמעדיף טיפול ללא מחטים. משחרר, מרגיע ומשפר טווחי תנועה." },
-  { id: "svc-herbs",       icon: <HerbsIcon />,       title: "צמחי מרפא סיניים", text: "נוסחאות צמחיות שמותאמות אישית לפי האבחון הסיני. משלימות את הטיפול בקליניקה ופועלות מבפנים — לחיזוק המערכת החיסונית, איזון הורמונלי ושיפור העיכול." },
-  { id: "svc-cupping",     icon: <CuppingIcon />,     title: "כוסות רוח",         text: "הנחת כוסות זכוכית חמות על הגב והכתפיים ליצירת ואקום. מגביר את זרימת הדם, משחרר שרירים תפוסים ומפחית דלקות. משולב לעיתים עם דיקור לתוצאות טובות יותר." },
+  { id: "svc-acupuncture", icon: <AcupunctureIcon />, title: "דיקור סיני",        text: "שיטה עתיקה המכוונת לשיפור זרימת האנרגיה בגוף, הפגת כאבים וטיפול בבעיות רפואיות שונות. הטיפול מותאם אישית לכל מטופל ומשפיע לטווח ארוך על הבריאות הכללית." },
+  { id: "svc-shiatsu",     icon: <ShiatsuIcon />,     title: "שיאצו",             text: "לחיצות ממוקדות לאורך מרידיאנים בגוף, במטרה לשחרר מתח, לשפר את זרימת הדם ולהקל על כאבים. שיאצו הוא פתרון טבעי ויעיל לשיפור הבריאות הפיזית והרגשית." },
+  { id: "svc-herbs",       icon: <HerbsIcon />,       title: "צמחי מרפא סיניים", text: "צמחי מרפא סיניים, הנבחרים בקפידה על פי הצרכים האישיים של כל מטופל. הצמחים תורמים לשיפור המערכת החיסונית, הפחתת דלקות ושיפור הבריאות הכללית בצורה טבעית." },
+  { id: "svc-cupping",     icon: <CuppingIcon />,     title: "כוסות רוח",         text: "שימוש בכוסות רוח לשיפור זרימת הדם ולהפחתת כאבים ודלקת. הטיפול, המבוצע באמצעות יצירת ואקום, מסייע בהקלה על כאבים כרוניים ובשיפור התחושה הכללית." },
 ];
 
 function Services() {
@@ -1132,29 +1132,49 @@ function FloatingWA() {
   return (
     <>
       <style>{`
-        .wa-float {
+        .float-buttons {
           position: fixed; bottom: 28px; left: 28px; z-index: 200;
-          display: flex; align-items: center; gap: 12px;
-          background: #25D366; color: white;
-          padding: 18px 32px; border-radius: 50px;
-          font-size: 17px; font-weight: 700;
-          text-decoration: none;
-          box-shadow: 0 6px 32px rgba(37,211,102,0.5);
+          display: flex; flex-direction: column; gap: 12px;
           opacity: 0; pointer-events: none;
         }
-        .wa-float:hover {
-          transform: scale(1.07) !important;
-          box-shadow: 0 8px 36px rgba(37,211,102,0.6) !important;
+        .float-btn {
+          display: flex; align-items: center; gap: 12px;
+          color: white; padding: 18px 32px; border-radius: 50px;
+          font-size: 17px; font-weight: 700;
+          text-decoration: none;
+          transition: transform 0.2s ease, box-shadow 0.3s;
+        }
+        .float-btn-phone {
+          background: #2563EB;
+          box-shadow: 0 6px 32px rgba(37,99,235,0.45);
+        }
+        .float-btn-phone:hover {
+          transform: scale(1.07);
+          box-shadow: 0 8px 36px rgba(37,99,235,0.6);
+        }
+        .float-btn-wa {
+          background: #25D366;
+          box-shadow: 0 6px 32px rgba(37,211,102,0.5);
+        }
+        .float-btn-wa:hover {
+          transform: scale(1.07);
+          box-shadow: 0 8px 36px rgba(37,211,102,0.6);
         }
         @media (max-width: 767px) {
-          .wa-float { padding: 16px 22px; }
-          .wa-float span.wa-label { display: none; }
+          .float-btn { padding: 16px 22px; }
+          .float-btn span.float-label { display: none; }
         }
       `}</style>
-      <a ref={elRef} href={WA_URL} target="_blank" rel="noreferrer" className="wa-float">
-        <WaSvg size={26} />
-        <span className="wa-label">ליצירת קשר</span>
-      </a>
+      <div ref={elRef} className="float-buttons">
+        <a href={`tel:+${PHONE}`} className="float-btn float-btn-phone">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span className="float-label">התקשרו אלי</span>
+        </a>
+        <a href={WA_URL} target="_blank" rel="noreferrer" className="float-btn float-btn-wa">
+          <WaSvg size={26} />
+          <span className="float-label">WhatsApp</span>
+        </a>
+      </div>
     </>
   );
 }
