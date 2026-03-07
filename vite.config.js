@@ -14,11 +14,6 @@ export default defineConfig({
         'shiatsu': resolve(__dirname, 'shiatsu/index.html'),
         'cupping': resolve(__dirname, 'cupping/index.html'),
         'herbs': resolve(__dirname, 'herbs/index.html'),
-        // Blog
-        'blog': resolve(__dirname, 'blog/index.html'),
-        'what-is-acupuncture': resolve(__dirname, 'blog/what-is-acupuncture/index.html'),
-        'prices': resolve(__dirname, 'blog/prices/index.html'),
-        'faq-complete': resolve(__dirname, 'blog/faq-complete/index.html'),
       },
     },
   },
