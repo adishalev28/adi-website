@@ -80,7 +80,7 @@ function Navbar() {
       }}>
         {/* לוגו */}
         <a href="#" style={{ textDecoration: "none", marginRight: filled ? "-38px" : "-54px", marginTop: filled ? "0" : "22px", transition: "margin 0.3s" }}>
-          <img src="/LOGO1.png" alt="עדי שלו" style={{
+          <img src="/LOGO1.png" alt="לוגו עדי שלו — רפואה סינית בראשון לציון" style={{
             height: filled ? "52px" : "78px", width: "auto",
             filter: filled ? "none" : "brightness(0) invert(1)",
             transition: "all 0.3s",
@@ -333,7 +333,7 @@ function About() {
       `}</style>
       <div className="about-grid">
         <div className="about-photo">
-          <img src="/adi-desk.jpg" alt="עדי שלו — מטפל ברפואה סינית" loading="lazy" />
+          <img src="/adi-desk.jpg" alt="עדי שלו — מטפל ברפואה סינית מוסמך, בוגר מכללת רידמן, ראשון לציון" loading="lazy" />
         </div>
         <div>
           <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px", textTransform: "uppercase" }}>
@@ -344,13 +344,13 @@ function About() {
           </h2>
           <div className="about-divider" style={{ width: "40px", height: "3px", background: C.gold, borderRadius: "2px", marginBottom: "24px" }} />
           <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
-            מטפל ברפואה סינית, מציע טיפולים מותאמים אישית המבוססים על עקרונות הרפואה הסינית המסורתית.
+            בוגר <strong style={{ color: C.bark }}>מכללת רידמן</strong> לרפואה סינית, עם למעלה מ-8 שנות ניסיון קליני ומעל 500 מטופלים. מתמחה בדיקור סיני, שיאצו, כוסות רוח וצמחי מרפא סיניים.
           </p>
           <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 16px" }}>
-            בקליניקה שלי ב<strong style={{ color: C.bark }}>ראשון לציון</strong> אני מקבל את מטופליי ומעניק יחס אישי ותשומת לב לכל פרט. אני בוחר את הטיפול המתאים ביותר לפי הצרכים הייחודיים של כל מטופל ומטופלת.
+            בקליניקה שלי ב<strong style={{ color: C.bark }}>ראשון לציון</strong> אני מעניק לכל מטופל יחס אישי ומקצועי. בטיפול הראשון אני מבצע אבחון מעמיק — שיחה, בדיקת דופק ולשון — ובונה תוכנית טיפול מותאמת שמשלבת בין השיטות השונות לפי הצורך.
           </p>
           <p style={{ fontSize: "16px", color: C.barkLight, lineHeight: 1.9, margin: "0 0 32px" }}>
-            המטרה שלי היא להביא להקלה בכאב, שיפור הבריאות הכללית ואיכות החיים — בשיטות טבעיות וממוקדות.
+            המטופלים שלי מגיעים עם כאבי גב, מיגרנות, מתח נפשי, בעיות שינה ועוד — ורבים מהם חווים הקלה משמעותית כבר אחרי מספר טיפולים בודדים. המטרה שלי היא לא רק להקל בכאב, אלא לטפל בשורש הבעיה ולשפר את איכות החיים לאורך זמן.
           </p>
           <div className="about-text-tags" style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
             {["דיקור סיני", "שיאצו", "צמחי מרפא", "כוסות רוח"].map(tag => (
@@ -398,10 +398,10 @@ const CuppingIcon = () => (
 
 // ─── Services ─────────────────────────────────────────────────────────────
 const SERVICES = [
-  { id: "svc-acupuncture", icon: <AcupunctureIcon />, title: "דיקור סיני",        text: "שיטה עתיקה המאזנת את זרימת האנרגיה בגוף. יעילה לכאבים, עייפות, חרדה, בעיות שינה ועוד." },
-  { id: "svc-shiatsu",     icon: <ShiatsuIcon />,     title: "שיאצו",             text: "עיסוי יפני עמוק לאורך מרידיאנים בגוף. משחרר מתח, מפחית כאבים ומשפר את מצב הרוח." },
-  { id: "svc-herbs",       icon: <HerbsIcon />,       title: "צמחי מרפא סיניים", text: "תרכובות צמחיות מותאמות אישית שתומכות בטיפול ומחזקות את הגוף מבפנים." },
-  { id: "svc-cupping",     icon: <CuppingIcon />,     title: "כוסות רוח",         text: "טכניקה שמגבירה זרימת הדם, מפחיתה כאבי שרירים ומסייעת לסילוק חסימות." },
+  { id: "svc-acupuncture", icon: <AcupunctureIcon />, title: "דיקור סיני",        text: "החדרת מחטים דקיקות בנקודות ספציפיות לאורך מרידיאנים בגוף. מסייע בכאבי גב, מיגרנות, חרדה, בעיות שינה ועייפות כרונית. הטיפול נמשך כ-45 דקות ורוב המטופלים מרגישים הקלה כבר מהטיפול הראשון." },
+  { id: "svc-shiatsu",     icon: <ShiatsuIcon />,     title: "שיאצו",             text: "עיסוי יפני עמוק בלחץ אגודלים וכפות ידיים על נקודות לאורך מרידיאנים. מתאים במיוחד למתח שרירי, כאבי צוואר וכתפיים, ולמי שמעדיף טיפול ללא מחטים. משחרר, מרגיע ומשפר טווחי תנועה." },
+  { id: "svc-herbs",       icon: <HerbsIcon />,       title: "צמחי מרפא סיניים", text: "נוסחאות צמחיות שמותאמות אישית לפי האבחון הסיני. משלימות את הטיפול בקליניקה ופועלות מבפנים — לחיזוק המערכת החיסונית, איזון הורמונלי ושיפור העיכול." },
+  { id: "svc-cupping",     icon: <CuppingIcon />,     title: "כוסות רוח",         text: "הנחת כוסות זכוכית חמות על הגב והכתפיים ליצירת ואקום. מגביר את זרימת הדם, משחרר שרירים תפוסים ומפחית דלקות. משולב לעיתים עם דיקור לתוצאות טובות יותר." },
 ];
 
 function Services() {
@@ -412,7 +412,7 @@ function Services() {
           <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>השירותים שלי</div>
           <h2 className="section-title" style={{ fontSize: "36px", fontWeight: 800, color: C.bark, margin: "0 0 16px" }}>שיטות הטיפול</h2>
           <p style={{ fontSize: "16px", color: C.barkLight, maxWidth: "480px", margin: "0 auto", lineHeight: 1.7 }}>
-            שילוב של שיטות רפואה סינית מסורתיות לטיפול הוליסטי ומותאם אישית
+            בקליניקה בראשון לציון אני משלב בין שיטות רפואה סינית מסורתיות לטיפול מותאם אישית לכל מטופל
           </p>
         </div>
         <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "20px" }}>
@@ -464,7 +464,7 @@ function ForWhom() {
         <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>למי זה מתאים</div>
         <h2 className="section-title" style={{ fontSize: "36px", fontWeight: 800, color: C.bark, margin: "0 0 16px" }}>מגיעים אלי עם כל מיני בעיות</h2>
         <p style={{ fontSize: "16px", color: C.barkLight, margin: "0 0 48px", lineHeight: 1.7, maxWidth: "560px", marginInline: "auto" }}>
-          רפואה סינית יכולה לסייע במגוון רחב של מצבים - כטיפול עיקרי או כתמיכה לצד הרפואה הקונבנציונלית
+          רפואה סינית מסייעת במגוון רחב של מצבים — כטיפול עיקרי או משלים לרפואה הקונבנציונלית. הנה חלק מהסיבות שבגללן מטופלים מגיעים לקליניקה שלי בראשון לציון
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center" }}>
           {conditions.map(c => (
@@ -604,12 +604,12 @@ function PhotoLightbox({ photos, startIndex, onClose }) {
 // ─── Clinic Photos — horizontal scroll strip with auto-scroll ────────────
 function ClinicPhotos() {
   const allPhotos = [
-    { src: "/clinic-room.jpg", alt: "חדר טיפולים" },
-    { src: "/adi-acupuncture.jpg", alt: "דיקור סיני" },
-    { src: "/adi-desk.jpg", alt: "חדר ייעוץ" },
-    { src: "/clinic-entrance.jpg", alt: "כניסה לקליניקה" },
-    { src: "/adi-treatment.jpg", alt: "טיפול במכשיר" },
-    { src: "/adi-shiatsu.jpg", alt: "שיאצו" },
+    { src: "/clinic-room.jpg", alt: "חדר טיפולים בקליניקה לרפואה סינית של עדי שלו בראשון לציון" },
+    { src: "/adi-acupuncture.jpg", alt: "עדי שלו מבצע טיפול דיקור סיני בקליניקה בראשון לציון" },
+    { src: "/adi-desk.jpg", alt: "חדר ייעוץ ואבחון בקליניקה לרפואה סינית — עדי שלו" },
+    { src: "/clinic-entrance.jpg", alt: "כניסה לקליניקת רפואה סינית עדי שלו בראשון לציון" },
+    { src: "/adi-treatment.jpg", alt: "טיפול בכוסות רוח בקליניקה לרפואה סינית בראשון לציון" },
+    { src: "/adi-shiatsu.jpg", alt: "טיפול שיאצו — עיסוי יפני מקצועי בקליניקת עדי שלו" },
   ];
   const landscape = allPhotos.filter((_, i) => [0, 1, 2].includes(i)); // clinic-room, acupuncture, desk
   const portrait  = allPhotos.filter((_, i) => [3, 4, 5].includes(i)); // shiatsu, treatment, entrance
@@ -750,7 +750,7 @@ const FAQ_ITEMS = [
   { q: "כמה טיפולים צריך?", a: "זה תלוי בבעיה ובמטופל. מצבים חריפים (כמו כאב גב חד) יכולים להשתפר תוך 3–5 טיפולים. מצבים כרוניים בדרך כלל דורשים סדרה ארוכה יותר. בטיפול הראשון נקבע יחד תוכנית מותאמת." },
   { q: "מה ההבדל בין דיקור לשיאצו?", a: "דיקור סיני משתמש במחטים דקות לאורך נקודות על מרידיאנים בגוף. שיאצו הוא עיסוי לחץ ידני באותן נקודות — ללא מחטים. שתי השיטות מבוססות על אותם עקרונות של רפואה סינית." },
   { q: "מה לצפות בטיפול הראשון?", a: "הטיפול הראשון כולל שיחה מקיפה על הבעיה, ההיסטוריה הרפואית ואורח החיים. לאחר מכן הטיפול עצמו — בדרך כלל 45–60 דקות. מומלץ להגיע לא רעבים ולא מלאים." },
-  { q: "האם הטיפול מתאים לי אם אני לוקח תרופות?", a: "ברוב המקרים כן. רפואה סינית יכולה לפעול בצוואר עם טיפול קונבנציונלי. חשוב לציין את כל התרופות בשיחת המיון הראשונה." },
+  { q: "האם הטיפול מתאים לי אם אני לוקח תרופות?", a: "ברוב המקרים כן. רפואה סינית יכולה לפעול בצוותא עם טיפול קונבנציונלי. חשוב לציין את כל התרופות בשיחת המיון הראשונה." },
   { q: "איפה הקליניקה?", a: "הקליניקה ממוקמת בראשון לציון. לכתובת המדויקת ולתיאום הגעה — שלחו הודעת WhatsApp ואחזור אליכם." },
 ];
 
@@ -1170,7 +1170,7 @@ function Contact() {
         <div style={{ color: C.goldLight, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>צור קשר</div>
         <h2 className="section-title" style={{ fontSize: "36px", fontWeight: 800, color: "white", margin: "0 0 16px" }}>מוכנים להתחיל?</h2>
         <p style={{ fontSize: "16px", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, margin: "0 0 48px" }}>
-          צרו קשר ונקבע לכם תור בהקדם האפשרי.<br />אשמח לענות על כל שאלה.
+          צרו קשר לתיאום תור בקליניקה לרפואה סינית בראשון לציון.<br />אשמח לענות על כל שאלה ולהתאים לכם את הטיפול המתאים ביותר.
         </p>
         <div style={{ display: "flex", flexDirection: "column", gap: "14px", alignItems: "stretch" }}>
           <a href={WA_URL} target="_blank" rel="noreferrer" className="contact-btn" style={{
