@@ -462,9 +462,9 @@ function ForWhom() {
     <Section bg={C.cream} style={{ paddingTop: "60px" }}>
       <div style={{ maxWidth: "820px", margin: "0 auto", textAlign: "center" }}>
         <div style={{ color: C.sage, fontSize: "12px", fontWeight: 700, letterSpacing: "3px", marginBottom: "12px" }}>למי זה מתאים</div>
-        <h2 className="section-title" style={{ fontSize: "36px", fontWeight: 800, color: C.bark, margin: "0 0 16px" }}>מגיעים אלי עם כל מיני בעיות</h2>
+        <h2 className="section-title" style={{ fontSize: "36px", fontWeight: 800, color: C.bark, margin: "0 0 16px" }}>במה רפואה סינית יכולה לעזור?</h2>
         <p style={{ fontSize: "16px", color: C.barkLight, margin: "0 0 48px", lineHeight: 1.7, maxWidth: "560px", marginInline: "auto" }}>
-          רפואה סינית מסייעת במגוון רחב של מצבים — כטיפול עיקרי או משלים לרפואה הקונבנציונלית. הנה חלק מהסיבות שבגללן מטופלים מגיעים לקליניקה שלי בראשון לציון
+          רפואה סינית מטפלת במגוון רחב של מצבים — הנה חלק מהנפוצים. לא מצאתם את מה שאתם מחפשים? צרו קשר ונבדוק יחד
         </p>
         <div style={{ display: "flex", flexWrap: "wrap", gap: "12px", justifyContent: "center" }}>
           {conditions.map(c => (
