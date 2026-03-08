@@ -19,6 +19,7 @@ export default defineConfig({
         'blog-what-is-acupuncture': resolve(__dirname, 'blog/what-is-acupuncture/index.html'),
         'blog-back-pain': resolve(__dirname, 'blog/back-pain/index.html'),
         'blog-faq-complete': resolve(__dirname, 'blog/faq-complete/index.html'),
+        '404': resolve(__dirname, '404.html'),
       },
     },
   },

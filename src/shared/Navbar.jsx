@@ -82,7 +82,8 @@ export default function Navbar({ basePath = "" }) {
 
           {/* המבורגר  - mobile */}
           <button className="mobile-nav" onClick={() => setMenuOpen(o => !o)}
-            style={{ background: "none", border: "none", cursor: "pointer", padding: "6px",
+            aria-label={menuOpen ? "סגור תפריט" : "פתח תפריט"}
+            style={{ background: "none", border: "none", cursor: "pointer", padding: "11px",
               display: "flex", flexDirection: "column", gap: "5px" }}>
             {[0,1,2].map(i => (
               <span key={i} style={{
