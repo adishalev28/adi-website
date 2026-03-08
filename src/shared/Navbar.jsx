@@ -18,6 +18,7 @@ export default function Navbar({ basePath = "" }) {
     { label: "שאלות נפוצות", href: `${basePath}#faq`      },
     { label: "המלצות",        href: `${basePath}#reviews`  },
     { label: "צור קשר",       href: `${basePath}#contact`  },
+    { label: "מאמרים",        href: "/blog/"               },
   ];
 
   const filled = scrolled || menuOpen;
