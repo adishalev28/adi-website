@@ -1,9 +1,9 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Prices from "../blog/Prices";
+import BackPain from "../blog/BackPain";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Prices />
+    <BackPain />
   </StrictMode>
 );

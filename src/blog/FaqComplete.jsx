@@ -4,7 +4,7 @@ import { C } from "../shared/constants";
 
 const RELATED = [
   { href: "/blog/what-is-acupuncture/", title: "מה זה דיקור סיני?", tag: "דיקור סיני" },
-  { href: "/blog/prices/", title: "מחירון טיפולים ברפואה סינית", tag: "מידע כללי" },
+  { href: "/blog/back-pain/", title: "דיקור סיני לכאבי גב", tag: "דיקור סיני" },
   { href: "/shiatsu/", title: "שיאצו — דף השירות", tag: "שירותים" },
 ];
 

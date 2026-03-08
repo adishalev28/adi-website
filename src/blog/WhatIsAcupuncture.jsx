@@ -2,7 +2,7 @@ import ArticleLayout from "./ArticleLayout";
 import { C } from "../shared/constants";
 
 const RELATED = [
-  { href: "/blog/prices/", title: "מחירון טיפולים ברפואה סינית", tag: "מידע כללי" },
+  { href: "/blog/back-pain/", title: "דיקור סיני לכאבי גב", tag: "דיקור סיני" },
   { href: "/blog/faq-complete/", title: "שאלות ותשובות — המדריך המלא", tag: "שאלות ותשובות" },
   { href: "/dikur-sini/", title: "דיקור סיני — דף השירות", tag: "שירותים" },
 ];

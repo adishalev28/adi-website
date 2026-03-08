@@ -17,7 +17,7 @@ export default defineConfig({
         // Blog
         'blog': resolve(__dirname, 'blog/index.html'),
         'blog-what-is-acupuncture': resolve(__dirname, 'blog/what-is-acupuncture/index.html'),
-        'blog-prices': resolve(__dirname, 'blog/prices/index.html'),
+        'blog-back-pain': resolve(__dirname, 'blog/back-pain/index.html'),
         'blog-faq-complete': resolve(__dirname, 'blog/faq-complete/index.html'),
       },
     },
