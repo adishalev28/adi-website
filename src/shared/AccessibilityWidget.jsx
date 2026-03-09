@@ -206,9 +206,9 @@ export default function AccessibilityWidget() {
         title="נגישות"
         style={{
           ...(scrolled
-            ? { bottom: "28px", top: "auto" }
-            : { top: "80px", bottom: "auto" }),
-          transition: "top 0.5s ease, bottom 0.5s ease, transform 0.2s ease, box-shadow 0.3s",
+            ? { bottom: "28px", top: "auto", right: "28px" }
+            : { top: "90px", bottom: "auto", right: "14px" }),
+          transition: "top 0.5s ease, bottom 0.5s ease, right 0.5s ease, transform 0.2s ease, box-shadow 0.3s",
         }}
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
