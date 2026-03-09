@@ -31,12 +31,13 @@ function saveSettings(s) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(s));
 }
 
-function applyToBody(settings) {
+function applySettings(settings) {
+  // Text size — on <html> for zoom to work
+  const html = document.documentElement.classList;
+  html.remove("a11y-text-lg", "a11y-text-xl");
+  if (settings.textSize > 0) html.add(CLASS_MAP.textSize[settings.textSize]);
+  // Toggles — on <body>
   const cl = document.body.classList;
-  // Text size
-  cl.remove("a11y-text-lg", "a11y-text-xl");
-  if (settings.textSize > 0) cl.add(CLASS_MAP.textSize[settings.textSize]);
-  // Toggles
   ["highContrast", "noAnimations", "highlightLinks", "largeCursor"].forEach(k => {
     cl.toggle(CLASS_MAP[k], !!settings[k]);
   });
@@ -49,7 +50,7 @@ export default function AccessibilityWidget() {
 
   // Apply on mount & changes
   useEffect(() => {
-    applyToBody(settings);
+    applySettings(settings);
     saveSettings(settings);
   }, [settings]);
 
@@ -98,8 +99,8 @@ export default function AccessibilityWidget() {
     <>
       <style>{`
         /* ─── Accessibility CSS overrides ─── */
-        body.a11y-text-lg { font-size: 120% !important; }
-        body.a11y-text-xl { font-size: 140% !important; }
+        html.a11y-text-lg { zoom: 1.15; }
+        html.a11y-text-xl { zoom: 1.3; }
 
         body.a11y-high-contrast {
           background: #000 !important;
