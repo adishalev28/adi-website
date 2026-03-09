@@ -46,13 +46,29 @@ function applySettings(settings) {
 export default function AccessibilityWidget() {
   const [open, setOpen] = useState(false);
   const [settings, setSettings] = useState(loadSettings);
+  const [visible, setVisible] = useState(false);
   const panelRef = useRef(null);
+  const btnRef = useRef(null);
 
   // Apply on mount & changes
   useEffect(() => {
     applySettings(settings);
     saveSettings(settings);
   }, [settings]);
+
+  // Show/hide based on scroll — same logic as FloatingWA
+  useEffect(() => {
+    const heroCta = document.getElementById("hero-cta");
+    // No hero CTA (service/blog/legal pages) — show immediately
+    if (!heroCta) { setVisible(true); return; }
+
+    const obs = new IntersectionObserver(([entry]) => {
+      setVisible(!entry.isIntersecting);
+    }, { threshold: 0 });
+
+    obs.observe(heroCta);
+    return () => obs.disconnect();
+  }, []);
 
   // Close on outside click
   useEffect(() => {
@@ -183,10 +199,16 @@ export default function AccessibilityWidget() {
 
       {/* Floating button */}
       <button
+        ref={btnRef}
         className="a11y-btn-float"
         onClick={(e) => { e.stopPropagation(); setOpen(!open); }}
         aria-label="פתיחת תפריט נגישות"
         title="נגישות"
+        style={{
+          opacity: visible ? 1 : 0,
+          pointerEvents: visible ? "auto" : "none",
+          transition: "opacity 0.35s ease, transform 0.2s ease, box-shadow 0.3s",
+        }}
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="4.5" r="2.5" fill="currentColor" stroke="none" />
