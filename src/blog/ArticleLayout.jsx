@@ -3,6 +3,8 @@ import Footer from "../shared/Footer";
 import FloatingWA from "../shared/FloatingWA";
 import ContactCTA from "../shared/ContactCTA";
 import GlobalStyles from "../shared/GlobalStyles";
+import CookieConsent from "../shared/CookieConsent";
+import AccessibilityWidget from "../shared/AccessibilityWidget";
 import { C, WA_URL } from "../shared/constants";
 import Section from "../shared/Section";
 
@@ -97,6 +99,8 @@ export default function ArticleLayout({ title, subtitle, date, readTime, childre
       <ContactCTA title="רוצים לדעת עוד?" subtitle="צרו קשר ונשמח לענות על כל שאלה" />
       <Footer />
       <FloatingWA />
+      <CookieConsent />
+      <AccessibilityWidget />
 
       <style>{`
         article h2 {

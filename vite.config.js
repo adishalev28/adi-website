@@ -20,6 +20,9 @@ export default defineConfig({
         'blog-back-pain': resolve(__dirname, 'blog/back-pain/index.html'),
         'blog-faq-complete': resolve(__dirname, 'blog/faq-complete/index.html'),
         '404': resolve(__dirname, '404.html'),
+        // Legal pages
+        'accessibility': resolve(__dirname, 'accessibility/index.html'),
+        'privacy': resolve(__dirname, 'privacy/index.html'),
       },
     },
   },

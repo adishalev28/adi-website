@@ -3,6 +3,8 @@ import Footer from "../shared/Footer";
 import FloatingWA from "../shared/FloatingWA";
 import ContactCTA from "../shared/ContactCTA";
 import GlobalStyles from "../shared/GlobalStyles";
+import CookieConsent from "../shared/CookieConsent";
+import AccessibilityWidget from "../shared/AccessibilityWidget";
 import { C } from "../shared/constants";
 
 const ARTICLES = [
@@ -125,6 +127,8 @@ export default function BlogIndex() {
       <ContactCTA />
       <Footer />
       <FloatingWA />
+      <CookieConsent />
+      <AccessibilityWidget />
     </>
   );
 }

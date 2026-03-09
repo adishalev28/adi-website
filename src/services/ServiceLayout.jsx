@@ -3,6 +3,8 @@ import Footer from "../shared/Footer";
 import FloatingWA from "../shared/FloatingWA";
 import ContactCTA from "../shared/ContactCTA";
 import GlobalStyles from "../shared/GlobalStyles";
+import CookieConsent from "../shared/CookieConsent";
+import AccessibilityWidget from "../shared/AccessibilityWidget";
 import { C } from "../shared/constants";
 
 export default function ServiceLayout({ children, otherServices = [] }) {
@@ -42,6 +44,8 @@ export default function ServiceLayout({ children, otherServices = [] }) {
       <ContactCTA />
       <Footer />
       <FloatingWA />
+      <CookieConsent />
+      <AccessibilityWidget />
     </>
   );
 }

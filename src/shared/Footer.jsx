@@ -27,6 +27,27 @@ export default function Footer() {
           >{l.label}</a>
         ))}
       </nav>
+      <nav style={{
+        display: "flex", flexWrap: "wrap", gap: "8px 16px",
+        justifyContent: "center", marginBottom: "16px",
+        paddingTop: "12px", borderTop: "1px solid rgba(255,255,255,0.08)",
+      }}>
+        <a href="/accessibility/" style={{
+          color: "rgba(255,255,255,0.4)", textDecoration: "none",
+          fontSize: "12px", transition: "color 0.2s",
+        }}
+          onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,0.7)"}
+          onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.4)"}
+        >הצהרת נגישות</a>
+        <span style={{ color: "rgba(255,255,255,0.15)" }}>|</span>
+        <a href="/privacy/" style={{
+          color: "rgba(255,255,255,0.4)", textDecoration: "none",
+          fontSize: "12px", transition: "color 0.2s",
+        }}
+          onMouseEnter={e => e.currentTarget.style.color = "rgba(255,255,255,0.7)"}
+          onMouseLeave={e => e.currentTarget.style.color = "rgba(255,255,255,0.4)"}
+        >מדיניות פרטיות</a>
+      </nav>
       <div>© {new Date().getFullYear()} עדי שלו  - רפואה סינית · ראשון לציון</div>
     </footer>
   );
