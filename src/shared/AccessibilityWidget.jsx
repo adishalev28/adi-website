@@ -46,7 +46,7 @@ function applySettings(settings) {
 export default function AccessibilityWidget() {
   const [open, setOpen] = useState(false);
   const [settings, setSettings] = useState(loadSettings);
-  const [visible, setVisible] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const panelRef = useRef(null);
   const btnRef = useRef(null);
 
@@ -56,14 +56,14 @@ export default function AccessibilityWidget() {
     saveSettings(settings);
   }, [settings]);
 
-  // Show/hide based on scroll — same logic as FloatingWA
+  // Track scroll position — button moves from top-right to bottom-right
   useEffect(() => {
     const heroCta = document.getElementById("hero-cta");
-    // No hero CTA (service/blog/legal pages) — show immediately
-    if (!heroCta) { setVisible(true); return; }
+    // No hero CTA (service/blog/legal pages) — always bottom-right
+    if (!heroCta) { setScrolled(true); return; }
 
     const obs = new IntersectionObserver(([entry]) => {
-      setVisible(!entry.isIntersecting);
+      setScrolled(!entry.isIntersecting);
     }, { threshold: 0 });
 
     obs.observe(heroCta);
@@ -178,7 +178,7 @@ export default function AccessibilityWidget() {
         .a11y-overlay.open { opacity: 1; pointer-events: auto; }
 
         .a11y-btn-float {
-          position: fixed; bottom: 28px; right: 28px; z-index: 200;
+          position: fixed; right: 28px; z-index: 200;
           width: 54px; height: 54px;
           background: ${C.sage}; color: white;
           border: none; border-radius: 50%;
@@ -205,9 +205,10 @@ export default function AccessibilityWidget() {
         aria-label="פתיחת תפריט נגישות"
         title="נגישות"
         style={{
-          opacity: visible ? 1 : 0,
-          pointerEvents: visible ? "auto" : "none",
-          transition: "opacity 0.35s ease, transform 0.2s ease, box-shadow 0.3s",
+          ...(scrolled
+            ? { bottom: "28px", top: "auto" }
+            : { top: "80px", bottom: "auto" }),
+          transition: "top 0.5s ease, bottom 0.5s ease, transform 0.2s ease, box-shadow 0.3s",
         }}
       >
         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
