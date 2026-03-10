@@ -1027,20 +1027,34 @@ function Contact() {
 export default function App() {
   /* Scroll to #hash on external entry (Google Ads sitelinks, shared links etc.)
      The browser's native anchor-scroll fires before React finishes rendering,
-     so we re-scroll after a short delay once the DOM is ready. */
+     so we retry several times until the layout stabilises. */
   useEffect(() => {
     const hash = window.location.hash;
-    if (hash) {
-      const timer = setTimeout(() => {
-        const el = document.getElementById(hash.slice(1));
-        if (el) {
-          const navbarHeight = 80;
-          const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
-          window.scrollTo({ top, behavior: "instant" });
-        }
-      }, 800);
-      return () => clearTimeout(timer);
+    if (!hash) return;
+
+    const id = hash.slice(1);
+    const navbarHeight = 80;
+    let attempts = 0;
+    let lastTop = -1;
+
+    function tryScroll() {
+      const el = document.getElementById(id);
+      if (!el) { if (attempts < 10) { attempts++; setTimeout(tryScroll, 300); } return; }
+
+      const top = Math.round(el.getBoundingClientRect().top + window.scrollY - navbarHeight);
+      window.scrollTo({ top, behavior: "instant" });
+
+      // If position changed since last attempt, layout is still shifting — try again
+      if (top !== lastTop && attempts < 10) {
+        lastTop = top;
+        attempts++;
+        setTimeout(tryScroll, 400);
+      }
     }
+
+    // First attempt after a short initial delay for React to mount
+    const timer = setTimeout(tryScroll, 500);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
