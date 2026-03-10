@@ -1025,6 +1025,24 @@ function Contact() {
 
 // ─── App ──────────────────────────────────────────────────────────────────
 export default function App() {
+  /* Scroll to #hash on external entry (Google Ads sitelinks, shared links etc.)
+     The browser's native anchor-scroll fires before React finishes rendering,
+     so we re-scroll after a short delay once the DOM is ready. */
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const timer = setTimeout(() => {
+        const el = document.getElementById(hash.slice(1));
+        if (el) {
+          const navbarHeight = 80;
+          const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
+          window.scrollTo({ top, behavior: "instant" });
+        }
+      }, 800);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <>
       <style>{`
