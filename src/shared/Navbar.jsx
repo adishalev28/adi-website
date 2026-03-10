@@ -13,12 +13,13 @@ export default function Navbar({ basePath = "" }) {
   }, []);
 
   const links = [
-    { label: "אודות",         href: `${basePath}#about`    },
-    { label: "שירותים",       href: `${basePath}#services` },
-    { label: "שאלות נפוצות", href: `${basePath}#faq`      },
-    { label: "המלצות",        href: `${basePath}#reviews`  },
-    { label: "צור קשר",       href: `${basePath}#contact`  },
-    { label: "מאמרים",        href: "/blog/"               },
+    { label: "אודות",           href: `${basePath}#about`    },
+    { label: "שירותים",         href: `${basePath}#services` },
+    { label: "למי זה מתאים?",  href: `${basePath}#for-whom` },
+    { label: "שאלות נפוצות",   href: `${basePath}#faq`      },
+    { label: "המלצות",          href: `${basePath}#reviews`  },
+    { label: "צור קשר",         href: `${basePath}#contact`  },
+    { label: "מאמרים",          href: "/blog/"               },
   ];
 
   const filled = scrolled || menuOpen;
